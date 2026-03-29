@@ -107,7 +107,7 @@ export default function PackagesSettingsPage() {
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
-                className="flex items-center justify-between rounded-lg border border-brand-border p-4"
+                className="flex items-center justify-between rounded-lg border border-white/8 p-4"
               >
                 {editingPkg === pkg.id ? (
                   <div className="flex items-center gap-3 flex-1">
@@ -140,7 +140,7 @@ export default function PackagesSettingsPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-lg font-bold text-brand-purple">
+                      <span className="text-lg font-bold text-brand-red">
                         {formatCurrencyShort(pkg.price)}
                       </span>
                       <Button
@@ -180,7 +180,7 @@ export default function PackagesSettingsPage() {
             {addOns.map((addon) => (
               <div
                 key={addon.id}
-                className="flex items-center justify-between rounded-lg border border-brand-border p-4"
+                className="flex items-center justify-between rounded-lg border border-white/8 p-4"
               >
                 {editingAddon === addon.id ? (
                   <div className="flex items-center gap-3 flex-1">

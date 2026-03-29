@@ -17,8 +17,8 @@ interface PipelineInquiry {
 }
 
 const columns = [
-  { status: "NEW", label: "New", color: "bg-brand-purple" },
-  { status: "CONTACTED", label: "Contacted", color: "bg-brand-gold" },
+  { status: "NEW", label: "New", color: "bg-brand-red" },
+  { status: "CONTACTED", label: "Contacted", color: "bg-brand-red" },
   { status: "PROPOSAL_SENT", label: "Proposal Sent", color: "bg-amber-500" },
   { status: "BOOKED", label: "Booked", color: "bg-brand-success" },
   { status: "COMPLETED", label: "Completed", color: "bg-emerald-600" },
@@ -67,7 +67,7 @@ export default function PipelinePage() {
             <div className="flex items-center gap-2 mb-3">
               <div className={cn("w-2.5 h-2.5 rounded-full", col.color)} />
               <h3 className="text-sm font-semibold text-brand-text">{col.label}</h3>
-              <span className="text-xs text-brand-text-muted bg-gray-100 rounded-full px-2 py-0.5">
+              <span className="text-xs text-brand-text-muted bg-white/10 rounded-full px-2 py-0.5">
                 {items.length}
               </span>
             </div>
@@ -75,19 +75,19 @@ export default function PipelinePage() {
             {/* Cards */}
             <div className="space-y-2">
               {items.length === 0 ? (
-                <div className="rounded-lg border border-dashed border-brand-border p-4 text-center text-xs text-brand-text-muted">
+                <div className="rounded-lg border border-dashed border-white/8 p-4 text-center text-xs text-brand-text-muted">
                   No inquiries
                 </div>
               ) : (
                 items.map((inq) => (
                   <div
                     key={inq.id}
-                    className="rounded-lg border border-brand-border bg-white p-3 shadow-sm hover:shadow-md transition-shadow"
+                    className="rounded-lg border border-white/8 bg-brand-card p-3 hover:bg-white/5 transition-colors"
                   >
                     <div className="flex items-start justify-between mb-2">
                       <Link
                         href={`/admin/inquiries/${inq.id}`}
-                        className="text-sm font-medium text-brand-text hover:text-brand-purple"
+                        className="text-sm font-medium text-brand-text hover:text-brand-red"
                       >
                         {inq.name}
                       </Link>

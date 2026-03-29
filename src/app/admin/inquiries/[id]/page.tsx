@@ -135,7 +135,7 @@ export default function InquiryDetailPage() {
               <div>
                 <dt className="text-brand-text-muted">Service Type</dt>
                 <dd>
-                  <Badge variant="purple">
+                  <Badge variant="red">
                     {serviceTypeLabel[inquiry.serviceType]}
                   </Badge>
                 </dd>

@@ -18,9 +18,9 @@ interface Inquiry {
   client: { id: string; name: string } | null;
 }
 
-const statusBadgeVariant: Record<string, "default" | "purple" | "gold" | "success" | "warning" | "error"> = {
-  NEW: "purple",
-  CONTACTED: "gold",
+const statusBadgeVariant: Record<string, "default" | "red" | "success" | "warning" | "error"> = {
+  NEW: "red",
+  CONTACTED: "red",
   PROPOSAL_SENT: "warning",
   BOOKED: "success",
   COMPLETED: "success",
@@ -101,9 +101,9 @@ export default function InquiriesPage() {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-xl border border-brand-border bg-white">
+      <div className="overflow-x-auto rounded-xl border border-white/8 bg-brand-card">
         <table className="w-full text-sm">
-          <thead className="border-b border-brand-border bg-gray-50/50">
+          <thead className="border-b border-white/8 bg-white/3">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Name</th>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Service</th>
@@ -113,7 +113,7 @@ export default function InquiriesPage() {
               <th className="px-4 py-3 text-right font-medium text-brand-text-muted"></th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brand-border">
+          <tbody className="divide-y divide-white/8">
             {loading ? (
               <tr>
                 <td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">
@@ -128,7 +128,7 @@ export default function InquiriesPage() {
               </tr>
             ) : (
               inquiries.map((inq) => (
-                <tr key={inq.id} className="hover:bg-gray-50/50">
+                <tr key={inq.id} className="hover:bg-white/5">
                   <td className="px-4 py-3">
                     <div>
                       <p className="font-medium text-brand-text">{inq.name}</p>

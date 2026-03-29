@@ -12,10 +12,10 @@ export default async function InquiryPage({
   return (
     <div className={isEmbed ? "p-4" : "min-h-screen bg-brand-bg"}>
       {!isEmbed && (
-        <header className="border-b border-brand-border bg-white">
+        <header className="border-b border-white/8 bg-brand-card">
           <div className="mx-auto max-w-3xl flex items-center justify-between px-4 py-4">
             <Link href="/" className="text-xl font-bold font-heading">
-              COOK<span className="text-brand-gold">/</span>Media
+              COOK<span className="text-brand-red">/</span>Media
             </Link>
           </div>
         </header>

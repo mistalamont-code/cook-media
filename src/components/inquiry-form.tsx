@@ -119,7 +119,7 @@ export function InquiryForm() {
             key={s}
             className={cn(
               "h-2 rounded-full transition-all",
-              s === step ? "w-8 bg-brand-purple" : s < step ? "w-8 bg-brand-gold" : "w-8 bg-gray-200"
+              s === step ? "w-8 bg-brand-red" : s < step ? "w-8 bg-brand-red" : "w-8 bg-white/10"
             )}
           />
         ))}
@@ -143,7 +143,7 @@ export function InquiryForm() {
                 }}
                 className={cn(
                   "text-center cursor-pointer transition-all",
-                  form.serviceType === opt.value && "ring-2 ring-brand-purple"
+                  form.serviceType === opt.value && "ring-2 ring-brand-red/20"
                 )}
               >
                 <h3 className="font-semibold text-lg mb-2">{opt.label}</h3>
@@ -294,7 +294,7 @@ export function InquiryForm() {
           />
 
           {error && (
-            <p className="text-sm text-brand-error bg-red-50 rounded-lg p-3">{error}</p>
+            <p className="text-sm text-brand-error bg-red-500/10 rounded-lg p-3">{error}</p>
           )}
 
           <div className="flex gap-3">

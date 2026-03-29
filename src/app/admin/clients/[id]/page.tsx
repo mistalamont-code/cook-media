@@ -114,7 +114,7 @@ export default function ClientDetailPage() {
             ) : (
               <div className="space-y-3">
                 {client.inquiries.map((inq) => (
-                  <Link key={inq.id} href={`/admin/inquiries/${inq.id}`} className="flex items-center justify-between rounded-lg border border-brand-border p-3 hover:bg-gray-50">
+                  <Link key={inq.id} href={`/admin/inquiries/${inq.id}`} className="flex items-center justify-between rounded-lg border border-white/8 p-3 hover:bg-white/5">
                     <div>
                       <Badge variant="outline" className="text-xs">{inq.serviceType.replace("_", " ")}</Badge>
                       <p className="text-xs text-brand-text-muted mt-1">{new Date(inq.createdAt).toLocaleDateString()}</p>
@@ -143,12 +143,12 @@ export default function ClientDetailPage() {
             ) : (
               <div className="space-y-3">
                 {client.proposals.map((prop) => (
-                  <Link key={prop.id} href={`/admin/proposals/${prop.id}`} className="flex items-center justify-between rounded-lg border border-brand-border p-3 hover:bg-gray-50">
+                  <Link key={prop.id} href={`/admin/proposals/${prop.id}`} className="flex items-center justify-between rounded-lg border border-white/8 p-3 hover:bg-white/5">
                     <div>
                       <p className="text-sm font-medium">{prop.package.name}</p>
                       <p className="text-xs text-brand-text-muted">{formatCurrencyShort(prop.totalPrice)}</p>
                     </div>
-                    <Badge variant={prop.status === "ACCEPTED" ? "success" : prop.status === "SENT" ? "gold" : "default"}>
+                    <Badge variant={prop.status === "ACCEPTED" ? "success" : prop.status === "SENT" ? "red" : "default"}>
                       {prop.status}
                     </Badge>
                   </Link>

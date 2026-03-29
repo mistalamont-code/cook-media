@@ -1,28 +1,44 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-purple: #6B2D8B;
-  --color-brand-purple-light: #8B4DAB;
-  --color-brand-purple-dark: #4A1D63;
-  --color-brand-gold: #D4A843;
-  --color-brand-gold-light: #E4C873;
-  --color-brand-bg: #FAFAF8;
-  --color-brand-surface: #FFFFFF;
-  --color-brand-text: #1A1A2E;
-  --color-brand-text-muted: #6B7280;
-  --color-brand-border: #E5E7EB;
-  --color-brand-success: #059669;
-  --color-brand-warning: #D97706;
-  --color-brand-error: #DC2626;
+  /* Brand colors — Black, Red, White */
+  --color-brand-red: #C41E2A;
+  --color-brand-red-light: #E63037;
+  --color-brand-red-dark: #9A1620;
+  --color-brand-red-glow: rgba(196, 30, 42, 0.15);
 
+  /* Background depth scale (darkest → lightest) */
+  --color-brand-deep: #0A0A0A;
+  --color-brand-dark: #111111;
+  --color-brand-mid: #1A1A1A;
+  --color-brand-card: #161616;
+  --color-brand-surface: #1E1E1E;
+  --color-brand-surface-light: #2A2A2A;
+
+  /* Legacy aliases for compatibility */
+  --color-brand-bg: #0A0A0A;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --color-brand-text: #F5F5F5;
+  --color-brand-text-muted: #A0A0A0;
+
+  /* Semantic */
+  --color-brand-success: #22C55E;
+  --color-brand-warning: #F59E0B;
+  --color-brand-error: #EF4444;
+
+  /* Fonts */
   --font-heading: var(--font-playfair);
   --font-body: var(--font-inter);
 }
 
 body {
-  background: var(--color-brand-bg);
+  background: var(--color-brand-deep);
   color: var(--color-brand-text);
   font-family: var(--font-body), sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {

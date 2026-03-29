@@ -23,10 +23,10 @@ interface ProposalDetail {
   addOns: Array<{ price: number; addOn: { name: string } }>;
 }
 
-const statusBadge: Record<string, "default" | "gold" | "purple" | "success" | "error"> = {
+const statusBadge: Record<string, "default" | "red" | "success" | "error"> = {
   DRAFT: "default",
-  SENT: "gold",
-  VIEWED: "purple",
+  SENT: "red",
+  VIEWED: "red",
   ACCEPTED: "success",
   DECLINED: "error",
   EXPIRED: "default",
@@ -95,7 +95,7 @@ export default function ProposalDetailPage() {
               href={publicUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-brand-purple hover:underline break-all"
+              className="text-sm text-brand-red hover:underline break-all"
             >
               {publicUrl}
             </a>
@@ -110,11 +110,11 @@ export default function ProposalDetailPage() {
           <ul className="space-y-1.5">
             {proposal.package.deliverables.map((d, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
-                <span className="text-brand-gold">✓</span> {d}
+                <span className="text-brand-red">✓</span> {d}
               </li>
             ))}
           </ul>
-          <div className="flex justify-between text-sm border-t border-brand-border pt-3">
+          <div className="flex justify-between text-sm border-t border-white/8 pt-3">
             <span>Package Price</span>
             <span className="font-medium">{formatCurrencyShort(proposal.packagePrice)}</span>
           </div>
@@ -131,9 +131,9 @@ export default function ProposalDetailPage() {
             </>
           )}
 
-          <div className="flex justify-between border-t border-brand-border pt-3">
+          <div className="flex justify-between border-t border-white/8 pt-3">
             <span className="text-lg font-bold">Total</span>
-            <span className="text-lg font-bold text-brand-purple">{formatCurrencyShort(proposal.totalPrice)}</span>
+            <span className="text-lg font-bold text-brand-red">{formatCurrencyShort(proposal.totalPrice)}</span>
           </div>
           <p className="text-xs text-brand-text-muted">
             50% retainer ({formatCurrencyShort(Math.round(proposal.totalPrice / 2))}) due to reserve date.

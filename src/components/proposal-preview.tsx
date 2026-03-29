@@ -18,18 +18,18 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
   return (
     <div className="max-w-2xl mx-auto">
       {/* Header */}
-      <div className="bg-brand-purple rounded-t-2xl px-8 py-10 text-center text-white">
+      <div className="bg-black rounded-t-2xl px-8 py-10 text-center text-white">
         <h1 className="text-3xl font-bold font-heading">
-          COOK<span className="text-brand-gold">/</span>Media
+          COOK<span className="text-brand-red">/</span>Media
         </h1>
-        <p className="text-purple-200 mt-2 text-sm">
+        <p className="text-white/60 mt-2 text-sm">
           Photography &bull; Videography &bull; Live Sound &bull; Publishing
         </p>
       </div>
 
-      <div className="bg-white border border-t-0 border-brand-border rounded-b-2xl shadow-sm">
+      <div className="bg-brand-card border border-t-0 border-white/8 rounded-b-2xl">
         {/* Client greeting */}
-        <div className="px-8 py-8 border-b border-brand-border">
+        <div className="px-8 py-8 border-b border-white/8">
           <h2 className="text-2xl font-bold font-heading text-brand-text">
             Proposal for {data.clientName}
           </h2>
@@ -40,19 +40,19 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
         </div>
 
         {/* Package */}
-        <div className="px-8 py-6 border-b border-brand-border">
+        <div className="px-8 py-6 border-b border-white/8">
           <h3 className="text-lg font-semibold font-heading text-brand-text mb-4">
             {data.packageName}
           </h3>
           <ul className="space-y-2">
             {data.deliverables.map((d, i) => (
               <li key={i} className="flex items-start gap-3 text-sm">
-                <span className="text-brand-gold font-bold mt-0.5">✓</span>
+                <span className="text-brand-red font-bold mt-0.5">✓</span>
                 <span className="text-brand-text">{d}</span>
               </li>
             ))}
           </ul>
-          <div className="flex justify-between mt-4 pt-4 border-t border-gray-100">
+          <div className="flex justify-between mt-4 pt-4 border-t border-white/8">
             <span className="text-sm text-brand-text-muted">Package Price</span>
             <span className="font-semibold">{formatCurrencyShort(data.packagePrice)}</span>
           </div>
@@ -60,7 +60,7 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
 
         {/* Add-ons */}
         {data.addOns.length > 0 && (
-          <div className="px-8 py-6 border-b border-brand-border">
+          <div className="px-8 py-6 border-b border-white/8">
             <h3 className="text-sm font-semibold text-brand-text-muted mb-3">Add-ons</h3>
             {data.addOns.map((a, i) => (
               <div key={i} className="flex justify-between text-sm py-1.5">
@@ -72,10 +72,10 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
         )}
 
         {/* Total */}
-        <div className="px-8 py-6 border-b border-brand-border bg-gray-50/50">
+        <div className="px-8 py-6 border-b border-white/8 bg-white/3">
           <div className="flex justify-between items-center">
             <span className="text-xl font-bold font-heading">Total</span>
-            <span className="text-2xl font-bold text-brand-purple">{formatCurrencyShort(data.totalPrice)}</span>
+            <span className="text-2xl font-bold text-brand-red">{formatCurrencyShort(data.totalPrice)}</span>
           </div>
           <div className="mt-3 space-y-1 text-sm text-brand-text-muted">
             <p>50% non-refundable retainer to reserve your date: <strong className="text-brand-text">{formatCurrencyShort(retainer)}</strong></p>
@@ -85,7 +85,7 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
 
         {/* Custom notes */}
         {data.customNotes && (
-          <div className="px-8 py-6 border-b border-brand-border">
+          <div className="px-8 py-6 border-b border-white/8">
             <h3 className="text-sm font-semibold text-brand-text-muted mb-2">Additional Notes</h3>
             <p className="text-sm text-brand-text whitespace-pre-wrap">{data.customNotes}</p>
           </div>
@@ -99,7 +99,7 @@ export function ProposalPreview({ data }: { data: ProposalData }) {
         )}
 
         {/* Footer */}
-        <div className="px-8 py-6 text-center bg-gray-50/50 rounded-b-2xl">
+        <div className="px-8 py-6 text-center bg-black/30 rounded-b-2xl">
           <p className="text-xs text-brand-text-muted">
             Cook Media LLC &bull; Erie, PA &bull; cook-media.com
           </p>

@@ -16,10 +16,10 @@ interface Proposal {
   package: { id: string; name: string };
 }
 
-const statusBadge: Record<string, "default" | "gold" | "purple" | "success" | "error"> = {
+const statusBadge: Record<string, "default" | "red" | "success" | "error"> = {
   DRAFT: "default",
-  SENT: "gold",
-  VIEWED: "purple",
+  SENT: "red",
+  VIEWED: "red",
   ACCEPTED: "success",
   DECLINED: "error",
   EXPIRED: "default",
@@ -44,9 +44,9 @@ export default function ProposalsPage() {
         </Link>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-brand-border bg-white">
+      <div className="overflow-x-auto rounded-xl border border-white/8 bg-brand-card">
         <table className="w-full text-sm">
-          <thead className="border-b border-brand-border bg-gray-50/50">
+          <thead className="border-b border-white/8 bg-white/3">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Client</th>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Package</th>
@@ -56,14 +56,14 @@ export default function ProposalsPage() {
               <th className="px-4 py-3 text-right font-medium text-brand-text-muted"></th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brand-border">
+          <tbody className="divide-y divide-white/8">
             {loading ? (
               <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading...</td></tr>
             ) : proposals.length === 0 ? (
               <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No proposals yet</td></tr>
             ) : (
               proposals.map((p) => (
-                <tr key={p.id} className="hover:bg-gray-50/50">
+                <tr key={p.id} className="hover:bg-white/5">
                   <td className="px-4 py-3">
                     <p className="font-medium">{p.client.name}</p>
                     <p className="text-xs text-brand-text-muted">{p.client.email}</p>

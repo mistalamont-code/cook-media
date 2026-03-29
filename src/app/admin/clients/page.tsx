@@ -46,9 +46,9 @@ export default function ClientsPage() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-brand-border bg-white">
+      <div className="overflow-x-auto rounded-xl border border-white/8 bg-brand-card">
         <table className="w-full text-sm">
-          <thead className="border-b border-brand-border bg-gray-50/50">
+          <thead className="border-b border-white/8 bg-white/3">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Name</th>
               <th className="px-4 py-3 text-left font-medium text-brand-text-muted">Email</th>
@@ -58,14 +58,14 @@ export default function ClientsPage() {
               <th className="px-4 py-3 text-right font-medium text-brand-text-muted"></th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brand-border">
+          <tbody className="divide-y divide-white/8">
             {loading ? (
               <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading...</td></tr>
             ) : clients.length === 0 ? (
               <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No clients found</td></tr>
             ) : (
               clients.map((client) => (
-                <tr key={client.id} className="hover:bg-gray-50/50">
+                <tr key={client.id} className="hover:bg-white/5">
                   <td className="px-4 py-3 font-medium">{client.name}</td>
                   <td className="px-4 py-3 text-brand-text-muted">{client.email}</td>
                   <td className="px-4 py-3 text-brand-text-muted">{client.phone || "—"}</td>

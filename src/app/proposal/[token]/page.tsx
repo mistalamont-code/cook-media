@@ -47,7 +47,7 @@ export default function PublicProposalPage() {
       <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center gap-4">
         <h1 className="text-2xl font-bold">Proposal Not Found</h1>
         <p className="text-brand-text-muted">This link may have expired or is invalid.</p>
-        <Link href="/" className="text-brand-purple hover:underline text-sm">
+        <Link href="/" className="text-brand-red hover:underline text-sm">
           Visit cook-media.com
         </Link>
       </div>

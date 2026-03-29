@@ -16,10 +16,10 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-60 flex-col border-r border-brand-border bg-white">
-      <div className="flex h-16 items-center border-b border-brand-border px-6">
-        <Link href="/admin" className="text-xl font-bold font-heading">
-          COOK<span className="text-brand-gold">/</span>Media
+    <aside className="flex h-full w-60 flex-col border-r border-white/8 bg-brand-dark">
+      <div className="flex h-16 items-center border-b border-white/8 px-6">
+        <Link href="/admin" className="text-xl font-black font-heading">
+          COOK<span className="text-brand-red">/</span>Media
         </Link>
       </div>
       <nav className="flex-1 space-y-1 p-3">
@@ -31,10 +31,10 @@ export function AdminSidebar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                "flex items-center gap-3 rounded px-3 py-2.5 text-sm font-medium transition-all duration-300",
                 isActive
-                  ? "bg-brand-purple/10 text-brand-purple"
-                  : "text-brand-text-muted hover:bg-gray-50 hover:text-brand-text"
+                  ? "bg-brand-red/10 text-brand-red"
+                  : "text-brand-text-muted hover:bg-white/5 hover:text-brand-text"
               )}
             >
               <span className="text-base">{item.icon}</span>
@@ -43,9 +43,9 @@ export function AdminSidebar() {
           );
         })}
       </nav>
-      <div className="border-t border-brand-border p-4">
+      <div className="border-t border-white/8 p-4">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-full bg-brand-purple flex items-center justify-center text-white text-sm font-medium">
+          <div className="h-8 w-8 rounded-full bg-brand-red flex items-center justify-center text-white text-sm font-semibold">
             CC
           </div>
           <div className="text-sm">

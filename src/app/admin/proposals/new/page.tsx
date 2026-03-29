@@ -108,17 +108,17 @@ function NewProposalPage() {
               }}
               className={cn(
                 "cursor-pointer",
-                packageId === pkg.id && "ring-2 ring-brand-purple"
+                packageId === pkg.id && "ring-2 ring-brand-red/20"
               )}
             >
               <CardTitle className="text-base">{pkg.name}</CardTitle>
-              <p className="text-2xl font-bold text-brand-purple mt-2">
+              <p className="text-2xl font-bold text-brand-red mt-2">
                 {formatCurrencyShort(pkg.price)}
               </p>
               <ul className="mt-3 space-y-1">
                 {pkg.deliverables.map((d, i) => (
                   <li key={i} className="text-xs text-brand-text-muted flex items-start gap-1.5">
-                    <span className="text-brand-gold mt-0.5">✓</span> {d}
+                    <span className="text-brand-red mt-0.5">✓</span> {d}
                   </li>
                 ))}
               </ul>
@@ -136,8 +136,8 @@ function NewProposalPage() {
               <label
                 key={addon.id}
                 className={cn(
-                  "flex items-center justify-between rounded-lg border border-brand-border p-3 cursor-pointer transition-colors",
-                  selectedAddOns.includes(addon.id) && "border-brand-purple bg-brand-purple/5"
+                  "flex items-center justify-between rounded-lg border border-white/8 p-3 cursor-pointer transition-colors",
+                  selectedAddOns.includes(addon.id) && "border-brand-red bg-brand-red/5"
                 )}
               >
                 <div className="flex items-center gap-3">
@@ -145,7 +145,7 @@ function NewProposalPage() {
                     type="checkbox"
                     checked={selectedAddOns.includes(addon.id)}
                     onChange={() => toggleAddOn(addon.id)}
-                    className="rounded border-brand-border text-brand-purple focus:ring-brand-purple"
+                    className="rounded border-white/8 text-brand-red focus:ring-brand-red"
                   />
                   <span className="text-sm">{addon.name}</span>
                 </div>
@@ -166,11 +166,11 @@ function NewProposalPage() {
       />
 
       {/* Total + Submit */}
-      <Card className="bg-gray-50">
+      <Card className="bg-white/3">
         <CardContent className="flex items-center justify-between pt-6">
           <div>
             <p className="text-sm text-brand-text-muted">Total</p>
-            <p className="text-3xl font-bold text-brand-purple">{formatCurrencyShort(total)}</p>
+            <p className="text-3xl font-bold text-brand-red">{formatCurrencyShort(total)}</p>
             {total > 0 && (
               <p className="text-xs text-brand-text-muted mt-1">
                 50% retainer: {formatCurrencyShort(Math.round(total / 2))}
