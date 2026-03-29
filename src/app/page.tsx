@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Corporate Services",
+    title: "Events",
     description:
-      "Elevate Your Brand's Story: In the corporate world, your story is your strength. Our team of skilled photographers and videographers are experts in capturing the essence of your brand. From corporate events to promotional videos, we bring a blend of creativity and professionalism that sets your business apart.",
+      "Capture Every Moment: From corporate galas to community celebrations, our team of skilled photographers and videographers are experts in capturing the energy and essence of your event. We bring a blend of creativity and professionalism that makes your occasion unforgettable.",
     cta: "Schedule Here",
     href: "/inquiry?service=LIVE_SOUND",
   },
