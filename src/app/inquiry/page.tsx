@@ -4,9 +4,9 @@ import Link from "next/link";
 export default async function InquiryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ embed?: string }>;
+  searchParams: Promise<{ embed?: string; service?: string }>;
 }) {
-  const { embed } = await searchParams;
+  const { embed, service } = await searchParams;
   const isEmbed = embed === "true";
 
   return (
@@ -29,7 +29,7 @@ export default async function InquiryPage({
             </p>
           </div>
         )}
-        <InquiryForm />
+        <InquiryForm defaultService={service} />
       </div>
     </div>
   );

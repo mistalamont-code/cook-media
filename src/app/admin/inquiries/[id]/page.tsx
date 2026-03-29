@@ -50,6 +50,7 @@ export default function InquiryDetailPage() {
   const [inquiry, setInquiry] = useState<InquiryDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [converting, setConverting] = useState(false);
+  const [creatingProposal, setCreatingProposal] = useState(false);
 
   useEffect(() => {
     fetch(`/api/inquiries/${id}`)
@@ -90,6 +91,35 @@ export default function InquiryDetailPage() {
     setConverting(false);
   }
 
+  async function createProposal() {
+    if (!inquiry) return;
+    setCreatingProposal(true);
+
+    let clientId = inquiry.clientId;
+
+    if (!clientId) {
+      const res = await fetch("/api/clients", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: inquiry.name,
+          email: inquiry.email,
+          phone: inquiry.phone,
+          inquiryId: inquiry.id,
+        }),
+      });
+      if (!res.ok) {
+        setCreatingProposal(false);
+        return;
+      }
+      const client = await res.json();
+      clientId = client.id;
+      setInquiry((prev) => prev ? { ...prev, clientId: client.id, client } : prev);
+    }
+
+    router.push(`/admin/proposals/new?clientId=${clientId}`);
+  }
+
   if (loading) return <p className="text-brand-text-muted">Loading...</p>;
   if (!inquiry) return <p className="text-brand-error">Inquiry not found</p>;
 
@@ -108,6 +138,9 @@ export default function InquiryDetailPage() {
             value={inquiry.status}
             onChange={(e) => updateStatus(e.target.value)}
           />
+          <Button onClick={createProposal} disabled={creatingProposal}>
+            {creatingProposal ? "Creating..." : "Create Proposal"}
+          </Button>
           {!inquiry.clientId && (
             <Button onClick={convertToClient} disabled={converting}>
               {converting ? "Converting..." : "Convert to Client"}

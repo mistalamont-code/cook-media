@@ -12,15 +12,35 @@ const navItems = [
   { href: "/admin/settings/packages", label: "Settings", icon: "⚙" },
 ];
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  mobileOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ mobileOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-60 flex-col border-r border-white/8 bg-brand-dark">
-      <div className="flex h-16 items-center border-b border-white/8 px-6">
+    <aside
+      className={cn(
+        "flex h-full w-60 flex-col border-r border-white/8 bg-brand-dark shrink-0",
+        // Mobile: fixed overlay, slide in/out
+        "fixed inset-y-0 left-0 z-50 transition-transform duration-300 md:relative md:translate-x-0 md:z-auto",
+        mobileOpen ? "translate-x-0" : "-translate-x-full"
+      )}
+    >
+      <div className="flex h-16 items-center justify-between border-b border-white/8 px-6">
         <Link href="/admin" className="text-xl font-black font-heading">
           COOK<span className="text-brand-red">/</span>Media
         </Link>
+        {/* Close button on mobile */}
+        <button
+          onClick={onClose}
+          className="text-brand-text-muted hover:text-brand-text md:hidden"
+          aria-label="Close sidebar"
+        >
+          <span className="text-xl" aria-hidden="true">✕</span>
+        </button>
       </div>
       <nav className="flex-1 space-y-1 p-3">
         {navItems.map((item) => {
@@ -30,6 +50,7 @@ export function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={cn(
                 "flex items-center gap-3 rounded px-3 py-2.5 text-sm font-medium transition-all duration-300",
                 isActive

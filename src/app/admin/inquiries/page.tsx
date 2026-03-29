@@ -55,7 +55,7 @@ const serviceTypeOptions = [
 export default function InquiriesPage() {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("NEW");
   const [serviceFilter, setServiceFilter] = useState("");
   const [search, setSearch] = useState("");
 
@@ -98,6 +98,19 @@ export default function InquiriesPage() {
           value={serviceFilter}
           onChange={(e) => setServiceFilter(e.target.value)}
         />
+        {(statusFilter || serviceFilter || search) && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setStatusFilter("");
+              setServiceFilter("");
+              setSearch("");
+            }}
+          >
+            View All
+          </Button>
+        )}
       </div>
 
       {/* Table */}

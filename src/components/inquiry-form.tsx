@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -62,12 +63,27 @@ const serviceOptions: { value: ServiceType; label: string; description: string }
   },
 ];
 
-export function InquiryForm() {
-  const [step, setStep] = useState(1);
-  const [form, setForm] = useState<FormData>(initialFormData);
+const validServiceTypes: ServiceType[] = ["WEDDING", "LIVE_SOUND", "SPEAKING_BOOK"];
+
+interface InquiryFormProps {
+  defaultService?: string;
+}
+
+export function InquiryForm({ defaultService }: InquiryFormProps) {
+  const isValidDefault = defaultService && validServiceTypes.includes(defaultService as ServiceType);
+  const [step, setStep] = useState(isValidDefault ? 2 : 1);
+  const [form, setForm] = useState<FormData>({
+    ...initialFormData,
+    ...(isValidDefault ? { serviceType: defaultService as ServiceType } : {}),
+  });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [dateHint, setDateHint] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+  const isStep3Valid = form.name.trim().length > 0 && isEmailValid;
 
   function update(field: keyof FormData, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -99,13 +115,39 @@ export function InquiryForm() {
 
   if (submitted) {
     return (
-      <div className="text-center space-y-4 py-12" role="status" aria-live="polite">
-        <div className="text-5xl" aria-hidden="true">✓</div>
-        <h2 className="text-2xl font-bold">Thank you, {form.name}!</h2>
-        <p className="text-brand-text-muted max-w-md mx-auto">
-          Your inquiry has been received. Corey will personally review your
-          details and get back to you within 24-48 hours.
-        </p>
+      <div className="text-center space-y-8 py-12" role="status" aria-live="polite">
+        <div className="space-y-4">
+          <div className="text-5xl" aria-hidden="true">✓</div>
+          <h2 className="text-2xl font-bold">Thank you, {form.name}!</h2>
+          <p className="text-brand-text-muted max-w-md mx-auto">
+            Your inquiry has been received. Corey will personally review your
+            details and get back to you within 24-48 hours.
+          </p>
+        </div>
+
+        <div className="max-w-md mx-auto rounded-xl border border-white/8 bg-brand-card p-6 text-left space-y-4">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-text-muted text-center">
+            What Happens Next
+          </h3>
+          <ol className="space-y-3">
+            <li className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/10 text-xs font-bold text-brand-red">1</span>
+              <span className="text-sm text-brand-text">We review your inquiry</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/10 text-xs font-bold text-brand-red">2</span>
+              <span className="text-sm text-brand-text">You receive a custom proposal</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/10 text-xs font-bold text-brand-red">3</span>
+              <span className="text-sm text-brand-text">Approve and we lock in your date</span>
+            </li>
+          </ol>
+        </div>
+
+        <Link href="/">
+          <Button variant="outline">Back to Homepage</Button>
+        </Link>
       </div>
     );
   }
@@ -166,13 +208,21 @@ export function InquiryForm() {
             </p>
           </div>
 
-          <Input
-            label="Event Date"
-            type="date"
-            id="eventDate"
-            value={form.eventDate}
-            onChange={(e) => update("eventDate", e.target.value)}
-          />
+          <div>
+            <Input
+              label="Event Date"
+              type="date"
+              id="eventDate"
+              value={form.eventDate}
+              onChange={(e) => {
+                update("eventDate", e.target.value);
+                setDateHint(false);
+              }}
+            />
+            {dateHint && !form.eventDate && (
+              <p className="text-sm text-brand-error mt-1.5">Please select an event date</p>
+            )}
+          </div>
 
           {form.serviceType === "WEDDING" && (
             <>
@@ -244,7 +294,17 @@ export function InquiryForm() {
             <Button variant="outline" onClick={() => setStep(1)}>
               Back
             </Button>
-            <Button onClick={() => setStep(3)} className="flex-1">
+            <Button
+              onClick={() => {
+                if (!form.eventDate) {
+                  setDateHint(true);
+                  return;
+                }
+                setStep(3);
+              }}
+              disabled={!form.eventDate}
+              className="flex-1"
+            >
               Continue
             </Button>
           </div>
@@ -268,16 +328,25 @@ export function InquiryForm() {
             onChange={(e) => update("name", e.target.value)}
             required
           />
-          <Input
-            label="Email Address"
-            id="email"
-            type="email"
-            autoComplete="email"
-            placeholder="e.g., jane@example.com"
-            value={form.email}
-            onChange={(e) => update("email", e.target.value)}
-            required
-          />
+          <div>
+            <Input
+              label="Email Address"
+              id="email"
+              type="email"
+              autoComplete="email"
+              placeholder="e.g., jane@example.com"
+              value={form.email}
+              onChange={(e) => {
+                update("email", e.target.value);
+                setEmailTouched(true);
+              }}
+              onBlur={() => setEmailTouched(true)}
+              required
+            />
+            {emailTouched && form.email && !isEmailValid && (
+              <p className="text-sm text-brand-error mt-1.5">Please enter a valid email</p>
+            )}
+          </div>
           <Input
             label="Phone Number (optional)"
             id="phone"
@@ -307,7 +376,7 @@ export function InquiryForm() {
             </Button>
             <Button
               onClick={handleSubmit}
-              disabled={submitting || !form.name || !form.email}
+              disabled={submitting || !isStep3Valid}
               className="flex-1"
             >
               {submitting ? "Sending..." : "Submit Inquiry"}

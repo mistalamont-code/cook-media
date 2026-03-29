@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrencyShort } from "@/lib/utils";
@@ -31,6 +33,12 @@ const serviceTypeLabel: Record<string, string> = {
   SPEAKING_BOOK: "Speaking / Book",
 };
 
+const serviceTypeOptions = [
+  { value: "WEDDING", label: "Wedding" },
+  { value: "LIVE_SOUND", label: "Live Sound" },
+  { value: "SPEAKING_BOOK", label: "Speaking / Book" },
+];
+
 export default function PackagesSettingsPage() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [addOns, setAddOns] = useState<AddOn[]>([]);
@@ -39,6 +47,21 @@ export default function PackagesSettingsPage() {
   const [editingAddon, setEditingAddon] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
   const [editPrice, setEditPrice] = useState("");
+
+  // New package form state
+  const [showNewPkg, setShowNewPkg] = useState(false);
+  const [newPkgName, setNewPkgName] = useState("");
+  const [newPkgPrice, setNewPkgPrice] = useState("");
+  const [newPkgServiceType, setNewPkgServiceType] = useState("WEDDING");
+  const [newPkgDeliverables, setNewPkgDeliverables] = useState("");
+  const [savingPkg, setSavingPkg] = useState(false);
+
+  // New add-on form state
+  const [showNewAddon, setShowNewAddon] = useState(false);
+  const [newAddonName, setNewAddonName] = useState("");
+  const [newAddonPrice, setNewAddonPrice] = useState("");
+  const [newAddonServiceType, setNewAddonServiceType] = useState("WEDDING");
+  const [savingAddon, setSavingAddon] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -84,6 +107,60 @@ export default function PackagesSettingsPage() {
     setEditingAddon(null);
   }
 
+  async function createPackage() {
+    if (!newPkgName || !newPkgPrice) return;
+    setSavingPkg(true);
+    const price = Math.round(parseFloat(newPkgPrice) * 100);
+    const deliverables = newPkgDeliverables
+      .split("\n")
+      .map((d) => d.trim())
+      .filter(Boolean);
+    const res = await fetch("/api/packages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: newPkgName,
+        price,
+        serviceType: newPkgServiceType,
+        deliverables,
+      }),
+    });
+    if (res.ok) {
+      const created = await res.json();
+      setPackages((prev) => [created, ...prev]);
+      setShowNewPkg(false);
+      setNewPkgName("");
+      setNewPkgPrice("");
+      setNewPkgServiceType("WEDDING");
+      setNewPkgDeliverables("");
+    }
+    setSavingPkg(false);
+  }
+
+  async function createAddOn() {
+    if (!newAddonName || !newAddonPrice) return;
+    setSavingAddon(true);
+    const price = Math.round(parseFloat(newAddonPrice) * 100);
+    const res = await fetch("/api/addons", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: newAddonName,
+        price,
+        serviceType: newAddonServiceType,
+      }),
+    });
+    if (res.ok) {
+      const created = await res.json();
+      setAddOns((prev) => [created, ...prev]);
+      setShowNewAddon(false);
+      setNewAddonName("");
+      setNewAddonPrice("");
+      setNewAddonServiceType("WEDDING");
+    }
+    setSavingAddon(false);
+  }
+
   async function toggleAddOnActive(id: string, active: boolean) {
     await fetch(`/api/addons/${id}`, {
       method: "PATCH",
@@ -100,10 +177,62 @@ export default function PackagesSettingsPage() {
       {/* Packages */}
       <Card>
         <CardHeader>
-          <CardTitle>Packages</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle>Packages</CardTitle>
+            {!showNewPkg && (
+              <Button size="sm" onClick={() => setShowNewPkg(true)}>
+                Add Package
+              </Button>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
+            {showNewPkg && (
+              <div className="rounded-lg border border-brand-red/30 bg-brand-card p-4 space-y-4">
+                <p className="text-sm font-semibold text-brand-red">New Package</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Input
+                    label="Name"
+                    id="new-pkg-name"
+                    placeholder="e.g., Premium Wedding"
+                    value={newPkgName}
+                    onChange={(e) => setNewPkgName(e.target.value)}
+                  />
+                  <Input
+                    label="Price ($)"
+                    id="new-pkg-price"
+                    type="number"
+                    placeholder="e.g., 3500"
+                    value={newPkgPrice}
+                    onChange={(e) => setNewPkgPrice(e.target.value)}
+                  />
+                </div>
+                <Select
+                  label="Service Type"
+                  id="new-pkg-service"
+                  options={serviceTypeOptions}
+                  value={newPkgServiceType}
+                  onChange={(e) => setNewPkgServiceType(e.target.value)}
+                />
+                <Textarea
+                  label="Deliverables (one per line)"
+                  id="new-pkg-deliverables"
+                  placeholder={"8 hours of coverage\nEdited highlight reel\n500+ edited photos"}
+                  value={newPkgDeliverables}
+                  onChange={(e) => setNewPkgDeliverables(e.target.value)}
+                  rows={4}
+                />
+                <div className="flex gap-3">
+                  <Button size="sm" onClick={createPackage} disabled={savingPkg || !newPkgName || !newPkgPrice}>
+                    {savingPkg ? "Saving..." : "Save Package"}
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={() => setShowNewPkg(false)}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            )}
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
@@ -173,10 +302,54 @@ export default function PackagesSettingsPage() {
       {/* Add-ons */}
       <Card>
         <CardHeader>
-          <CardTitle>Add-ons</CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle>Add-ons</CardTitle>
+            {!showNewAddon && (
+              <Button size="sm" onClick={() => setShowNewAddon(true)}>
+                Add Add-on
+              </Button>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
+            {showNewAddon && (
+              <div className="rounded-lg border border-brand-red/30 bg-brand-card p-4 space-y-4">
+                <p className="text-sm font-semibold text-brand-red">New Add-on</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Input
+                    label="Name"
+                    id="new-addon-name"
+                    placeholder="e.g., Drone Footage"
+                    value={newAddonName}
+                    onChange={(e) => setNewAddonName(e.target.value)}
+                  />
+                  <Input
+                    label="Price ($)"
+                    id="new-addon-price"
+                    type="number"
+                    placeholder="e.g., 500"
+                    value={newAddonPrice}
+                    onChange={(e) => setNewAddonPrice(e.target.value)}
+                  />
+                </div>
+                <Select
+                  label="Service Type"
+                  id="new-addon-service"
+                  options={serviceTypeOptions}
+                  value={newAddonServiceType}
+                  onChange={(e) => setNewAddonServiceType(e.target.value)}
+                />
+                <div className="flex gap-3">
+                  <Button size="sm" onClick={createAddOn} disabled={savingAddon || !newAddonName || !newAddonPrice}>
+                    {savingAddon ? "Saving..." : "Save Add-on"}
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={() => setShowNewAddon(false)}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            )}
             {addOns.map((addon) => (
               <div
                 key={addon.id}

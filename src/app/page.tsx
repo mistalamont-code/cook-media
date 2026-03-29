@@ -262,63 +262,28 @@ export default function HomePage() {
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold font-heading">Contact Us</h2>
             <div className="w-16 h-0.5 bg-brand-red mx-auto" />
-            <p className="text-sm text-brand-text-muted">
-              corey@cook-media.com
-            </p>
+            <div className="space-y-2">
+              <p className="text-sm text-brand-text-muted">
+                <a href="mailto:corey@cook-media.com" className="hover:text-brand-red transition-colors">corey@cook-media.com</a>
+              </p>
+              <p className="text-sm text-brand-text-muted">
+                <a href="tel:+18145662733" className="hover:text-brand-red transition-colors">(814) 566-2733</a>
+              </p>
+            </div>
           </div>
-          <form className="space-y-5" action="/inquiry" method="get">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <label htmlFor="contact-name" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
-                  Name *
-                </label>
-                <input
-                  id="contact-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
-                  placeholder="Your name…"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <label htmlFor="contact-email" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
-                  Email *
-                </label>
-                <input
-                  id="contact-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-            <div className="space-y-1.5">
-              <label htmlFor="contact-message" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
-                Message *
-              </label>
-              <textarea
-                id="contact-message"
-                name="message"
-                required
-                rows={5}
-                className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
-                placeholder="Tell us about your project…"
-              />
-            </div>
-            <div className="text-center pt-2">
-              <button
-                type="submit"
-                className="rounded bg-brand-red px-10 py-3.5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
-              >
-                Send
-              </button>
-            </div>
-          </form>
+          <div className="rounded-lg border border-white/8 bg-brand-card p-10 text-center space-y-6">
+            <h3 className="text-2xl font-bold font-heading">Ready to Get Started?</h3>
+            <p className="text-sm text-brand-text-muted leading-relaxed max-w-md mx-auto">
+              Tell us about your event and we&apos;ll take it from there. We review your details,
+              send a custom proposal tailored to your needs, and once you approve, we lock in your date.
+            </p>
+            <Link
+              href="/inquiry"
+              className="inline-block rounded bg-brand-red px-10 py-4 text-sm font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
+            >
+              Book Here
+            </Link>
+          </div>
         </div>
       </section>
 
