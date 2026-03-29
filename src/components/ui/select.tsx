@@ -23,8 +23,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           id={id}
           className={cn(
-            "block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text focus:border-brand-red focus:outline-none transition-colors duration-300",
-            error && "border-brand-error focus:border-brand-error",
+            "block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300",
+            error && "border-brand-error focus-visible:border-brand-error focus-visible:ring-brand-error/20",
             className
           )}
           {...props}
@@ -40,7 +40,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           ))}
         </select>
-        {error && <p className="text-sm text-brand-error">{error}</p>}
+        {error && <p className="text-sm text-brand-error" role="alert">{error}</p>}
       </div>
     );
   }

@@ -99,8 +99,8 @@ export function InquiryForm() {
 
   if (submitted) {
     return (
-      <div className="text-center space-y-4 py-12">
-        <div className="text-5xl">✓</div>
+      <div className="text-center space-y-4 py-12" role="status" aria-live="polite">
+        <div className="text-5xl" aria-hidden="true">✓</div>
         <h2 className="text-2xl font-bold">Thank you, {form.name}!</h2>
         <p className="text-brand-text-muted max-w-md mx-auto">
           Your inquiry has been received. Corey will personally review your
@@ -113,12 +113,12 @@ export function InquiryForm() {
   return (
     <div className="space-y-8">
       {/* Progress indicator */}
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2" role="progressbar" aria-valuenow={step} aria-valuemin={1} aria-valuemax={3} aria-label={`Step ${step} of 3`}>
         {[1, 2, 3].map((s) => (
           <div
             key={s}
             className={cn(
-              "h-2 rounded-full transition-all",
+              "h-2 rounded-full transition-[width,background-color] duration-300",
               s === step ? "w-8 bg-brand-red" : s < step ? "w-8 bg-brand-red" : "w-8 bg-white/10"
             )}
           />
@@ -262,6 +262,7 @@ export function InquiryForm() {
           <Input
             label="Your Name"
             id="name"
+            autoComplete="name"
             placeholder="e.g., Jane Smith"
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
@@ -271,6 +272,7 @@ export function InquiryForm() {
             label="Email Address"
             id="email"
             type="email"
+            autoComplete="email"
             placeholder="e.g., jane@example.com"
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
@@ -280,6 +282,8 @@ export function InquiryForm() {
             label="Phone Number (optional)"
             id="phone"
             type="tel"
+            inputMode="tel"
+            autoComplete="tel"
             placeholder="e.g., (814) 555-1234"
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
@@ -294,7 +298,7 @@ export function InquiryForm() {
           />
 
           {error && (
-            <p className="text-sm text-brand-error bg-red-500/10 rounded-lg p-3">{error}</p>
+            <p className="text-sm text-brand-error bg-red-500/10 rounded-lg p-3" role="alert" aria-live="polite">{error}</p>
           )}
 
           <div className="flex gap-3">

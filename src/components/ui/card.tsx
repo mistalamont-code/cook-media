@@ -8,14 +8,24 @@ interface CardProps {
 }
 
 export function Card({ children, className, hover, onClick }: CardProps) {
+  const isInteractive = hover || !!onClick;
+
   return (
     <div
       className={cn(
-        "rounded-lg border border-white/8 bg-brand-card p-6 transition-all duration-300",
-        hover && "hover:border-brand-red/30 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(196,30,42,0.1)] cursor-pointer",
+        "rounded-lg border border-white/8 bg-brand-card p-6 transition-[color,border-color,box-shadow,transform] duration-300",
+        isInteractive && "hover:border-brand-red/30 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(196,30,42,0.1)] cursor-pointer",
         className
       )}
       onClick={onClick}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onKeyDown={isInteractive ? (e) => {
+        if ((e.key === "Enter" || e.key === " ") && onClick) {
+          e.preventDefault();
+          onClick();
+        }
+      } : undefined}
     >
       {children}
     </div>

@@ -68,11 +68,16 @@ const faqs = [
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-brand-deep">
+      {/* Skip to main content */}
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded focus:bg-brand-red focus:px-4 focus:py-2 focus:text-white focus:text-sm">
+        Skip to Main Content
+      </a>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/8 bg-brand-deep/95 backdrop-blur-xl">
+      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-white/8 bg-brand-deep/95 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 h-[70px]">
-          <Link href="/" className="text-2xl font-black font-heading">
-            COOK<span className="text-brand-red">/</span>Media
+          <Link href="/" aria-label="COOK/Media home" className="text-2xl font-black font-heading">
+            COOK<span className="text-brand-red" aria-hidden="true">/</span>Media
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <a href="#services" className="text-xs font-medium uppercase tracking-widest text-brand-text-muted hover:text-brand-red transition-colors duration-300">
@@ -89,12 +94,11 @@ export default function HomePage() {
             </a>
             <Link
               href="/inquiry"
-              className="rounded bg-brand-red px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
+              className="rounded bg-brand-red px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
             >
               Book Here
             </Link>
           </div>
-          {/* Mobile: simple link */}
           <Link
             href="/inquiry"
             className="md:hidden rounded bg-brand-red px-5 py-2 text-xs font-semibold uppercase tracking-widest text-white"
@@ -105,7 +109,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative flex items-center justify-center min-h-screen pt-[70px] px-6">
+      <section id="main" className="relative flex items-center justify-center min-h-screen pt-[70px] px-6 scroll-mt-[70px]">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep" />
         <div className="relative text-center max-w-3xl mx-auto space-y-8">
           <p className="text-xs font-semibold uppercase tracking-[4px] text-brand-red">
@@ -139,7 +143,7 @@ export default function HomePage() {
       </section>
 
       {/* Welcome / About */}
-      <section id="about" className="py-24 px-6">
+      <section id="about" className="py-24 px-6 scroll-mt-[70px]">
         <div className="mx-auto max-w-3xl text-center space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[4px] text-brand-red">
             Welcome
@@ -160,7 +164,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-24 px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+      <section id="services" className="py-24 px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-5xl">
           <div className="text-center space-y-4 mb-16">
             <p className="text-xs font-semibold uppercase tracking-[4px] text-brand-red">
@@ -217,7 +221,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-24 px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+      <section id="faq" className="py-24 px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-3xl">
           <div className="text-center space-y-4 mb-16">
             <p className="text-xs font-semibold uppercase tracking-[4px] text-brand-red">
@@ -234,7 +238,7 @@ export default function HomePage() {
               >
                 <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-sm font-semibold list-none">
                   {faq.q}
-                  <span className="text-brand-red text-lg ml-4 group-open:rotate-45 transition-transform duration-300">
+                  <span aria-hidden="true" className="text-brand-red text-lg ml-4 group-open:rotate-45 transition-transform duration-300">
                     +
                   </span>
                 </summary>
@@ -250,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-6">
+      <section id="contact" className="py-24 px-6 scroll-mt-[70px]">
         <div className="mx-auto max-w-xl">
           <div className="text-center space-y-4 mb-12">
             <p className="text-xs font-semibold uppercase tracking-[4px] text-brand-red">
@@ -262,46 +266,54 @@ export default function HomePage() {
               corey@cook-media.com
             </p>
           </div>
-          <form className="space-y-5" action="/inquiry">
+          <form className="space-y-5" action="/inquiry" method="get">
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <label className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
+                <label htmlFor="contact-name" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
                   Name *
                 </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   required
-                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus:border-brand-red focus:outline-none transition-colors duration-300"
-                  placeholder="Your name"
+                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
+                  placeholder="Your name…"
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
+                <label htmlFor="contact-email" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
                   Email *
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   required
-                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus:border-brand-red focus:outline-none transition-colors duration-300"
+                  className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
                   placeholder="you@example.com"
                 />
               </div>
             </div>
             <div className="space-y-1.5">
-              <label className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
+              <label htmlFor="contact-message" className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted">
                 Message *
               </label>
               <textarea
+                id="contact-message"
+                name="message"
                 required
                 rows={5}
-                className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus:border-brand-red focus:outline-none transition-colors duration-300"
-                placeholder="Tell us about your project..."
+                className="block w-full rounded border border-white/10 bg-brand-surface px-4 py-3 text-sm text-brand-text placeholder:text-brand-text-muted/50 focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/20 focus:outline-none transition-[color,border-color,box-shadow] duration-300"
+                placeholder="Tell us about your project…"
               />
             </div>
             <div className="text-center pt-2">
               <button
                 type="submit"
-                className="rounded bg-brand-red px-10 py-3.5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
+                className="rounded bg-brand-red px-10 py-3.5 text-sm font-semibold uppercase tracking-widest text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
               >
                 Send
               </button>

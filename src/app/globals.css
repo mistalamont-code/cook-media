@@ -39,8 +39,44 @@ body {
   font-family: var(--font-body), sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading), serif;
+  text-wrap: balance;
+}
+
+/* Tabular numbers for prices/stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced motion: disable animations and transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth scroll for anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Focus visible ring for interactive elements */
+:focus-visible {
+  outline: 2px solid var(--color-brand-red);
+  outline-offset: 2px;
+}
+
+/* Native selects on dark bg */
+select {
+  background-color: var(--color-brand-surface);
+  color: var(--color-brand-text);
 }

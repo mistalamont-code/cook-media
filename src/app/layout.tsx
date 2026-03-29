@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -19,13 +19,18 @@ export const metadata: Metadata = {
   description: "Cook Media LLC — Photography, Videography, Live Sound & Publishing",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0A0A0A",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
