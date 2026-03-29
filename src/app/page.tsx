@@ -87,7 +87,7 @@ export default function HomePage() {
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            {["Services", "About", "FAQ", "Contact"].map((item) => (
+            {["Services", "Pricing", "About", "FAQ", "Contact"].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-[0.7rem] font-medium uppercase tracking-[2px] text-brand-text-muted hover:text-brand-red transition-colors duration-300">
                 {item}
               </a>
@@ -229,6 +229,142 @@ export default function HomePage() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PRICING ═══ */}
+      <section id="pricing" className="py-[100px] px-6 scroll-mt-[70px]">
+        <div className="mx-auto max-w-[1000px]">
+          <div className="text-center space-y-4 mb-16">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+              Investment
+            </p>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Service Pricing</h2>
+            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+          </div>
+
+          {/* Wedding Packages */}
+          <div className="mb-16">
+            <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-8">
+              Wedding Photography
+            </h3>
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* Package 1 — Anchor */}
+              <div className="rounded-lg border-2 border-brand-red bg-brand-card p-8 relative">
+                <span className="absolute -top-3 left-6 bg-brand-red text-white text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
+                  Most Popular
+                </span>
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 1</p>
+                <p className="text-3xl font-bold font-heading tabular-nums">$3,000</p>
+                <div className="w-10 h-[2px] bg-brand-red mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Highlight video with drone footage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Rehearsal dinner coverage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Ceremony livestream included</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
+                </ul>
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-red px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]">
+                  Book Package 1
+                </Link>
+              </div>
+
+              {/* Package 2 */}
+              <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 2</p>
+                <p className="text-3xl font-bold font-heading tabular-nums">$2,000</p>
+                <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Highlight video</li>
+                </ul>
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
+                  Book Package 2
+                </Link>
+              </div>
+
+              {/* Package 3 */}
+              <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 3</p>
+                <p className="text-3xl font-bold font-heading tabular-nums">$1,500</p>
+                <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> 6-hour photography (1 photographer)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
+                </ul>
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
+                  Book Package 3
+                </Link>
+              </div>
+            </div>
+
+            <p className="text-[0.78rem] text-brand-text-muted/60 mt-6 text-center">
+              All final images available for download with full copyrights. HD Livestreaming Add-On available for $350.
+            </p>
+          </div>
+
+          {/* A La Carte */}
+          <div className="grid gap-12 md:grid-cols-2 mb-16">
+            <div>
+              <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+                Wedding A La Carte
+              </h3>
+              <div className="rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden">
+                <table className="w-full text-[0.85rem]">
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {[
+                      ["Family Portrait Session", "$200"],
+                      ["Wedding Day Details Preparation", "$200"],
+                      ["Rehearsal Coverage", "$200"],
+                      ["Engagement Session", "$200"],
+                      ["HD Livestreaming w/ Pro Sound", "$350"],
+                    ].map(([service, price]) => (
+                      <tr key={service} className="hover:bg-white/[0.03] transition-colors">
+                        <td className="px-6 py-3.5 text-brand-text">{service}</td>
+                        <td className="px-6 py-3.5 text-right font-semibold tabular-nums">{price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+                Event Photography
+              </h3>
+              <div className="rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden">
+                <table className="w-full text-[0.85rem]">
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {[
+                      ["Hourly Rate", "$75/hr"],
+                      ["Additional Hours (overtime)", "$75/hr"],
+                    ].map(([service, price]) => (
+                      <tr key={service} className="hover:bg-white/[0.03] transition-colors">
+                        <td className="px-6 py-3.5 text-brand-text">{service}</td>
+                        <td className="px-6 py-3.5 text-right font-semibold tabular-nums">{price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-[0.78rem] text-brand-text-muted/60 mt-4">
+                Custom quotes available for multi-day events and large-scale productions.
+              </p>
+            </div>
+          </div>
+
+          {/* Booking policy */}
+          <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-3">
+              Booking Policy
+            </p>
+            <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
+              50% of package due to reserve your date. All packages and extras applicable to tax.
+              Cash, check, and credit card accepted. All final images delivered by online gallery.
+            </p>
           </div>
         </div>
       </section>
