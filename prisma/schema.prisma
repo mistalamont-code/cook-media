@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── ENUMS ───────────────────────────────────────────
+
+enum ServiceType {
+  WEDDING
+  LIVE_SOUND
+  SPEAKING_BOOK
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  PROPOSAL_SENT
+  BOOKED
+  COMPLETED
+  ARCHIVED
+  DECLINED
+}
+
+enum ProposalStatus {
+  DRAFT
+  SENT
+  VIEWED
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+// ─── TABLES ──────────────────────────────────────────
+
+model Client {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  notes     String?  @db.Text
+  driveFolderId String? // Google Drive folder ID for this client
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  inquiries Inquiry[]
+  proposals Proposal[]
+
+  @@map("clients")
+}
+
+model Inquiry {
+  id          String        @id @default(cuid())
+  status      InquiryStatus @default(NEW)
+  serviceType ServiceType
+
+  // Contact info (denormalized — inquiry may exist before client record)
+  name        String
+  email       String
+  phone       String?
+
+  // Common fields
+  eventDate   DateTime?
+  message     String?       @db.Text
+
+  // Wedding-specific
+  venue       String?
+  guestCount  Int?
+  partnerName String?
+
+  // Live-sound-specific
+  eventType   String?
+  attendees   Int?
+
+  // Speaking/book-specific
+  topic       String?
+  audience    String?
+
+  // Relationships
+  clientId    String?
+  client      Client?       @relation(fields: [clientId], references: [id])
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status])
+  @@index([serviceType])
+  @@index([createdAt])
+  @@map("inquiries")
+}
+
+model Package {
+  id           String      @id @default(cuid())
+  serviceType  ServiceType
+  name         String
+  price        Int         // cents
+  description  String?     @db.Text
+  deliverables String[]    // array of line items
+  sortOrder    Int         @default(0)
+  active       Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  proposals    Proposal[]
+
+  @@map("packages")
+}
+
+model AddOn {
+  id          String      @id @default(cuid())
+  serviceType ServiceType
+  name        String
+  price       Int         // cents
+  description String?
+  active      Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  proposals   ProposalAddOn[]
+
+  @@map("add_ons")
+}
+
+model Proposal {
+  id           String         @id @default(cuid())
+  token        String         @unique @default(cuid()) // public shareable token
+  status       ProposalStatus @default(DRAFT)
+
+  clientId     String
+  client       Client         @relation(fields: [clientId], references: [id])
+
+  packageId    String
+  package      Package        @relation(fields: [packageId], references: [id])
+
+  // Snapshot pricing at creation (edits to packages don't alter sent proposals)
+  packagePrice Int
+  totalPrice   Int
+
+  customNotes  String?        @db.Text
+  validUntil   DateTime?
+  sentAt       DateTime?
+  viewedAt     DateTime?
+  driveFileId  String?        // Google Drive file ID for proposal PDF
+
+  addOns       ProposalAddOn[]
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([token])
+  @@map("proposals")
+}
+
+model ProposalAddOn {
+  id         String   @id @default(cuid())
+  proposalId String
+  proposal   Proposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  addOnId    String
+  addOn      AddOn    @relation(fields: [addOnId], references: [id])
+  price      Int      // snapshot at creation time
+
+  @@unique([proposalId, addOnId])
+  @@map("proposal_add_ons")
+}
