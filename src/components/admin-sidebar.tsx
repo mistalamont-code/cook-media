@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { href: "/admin", label: "Dashboard", icon: "◈", exact: true },
   { href: "/admin/pipeline", label: "Pipeline", icon: "◫" },
   { href: "/admin/inquiries", label: "Inquiries", icon: "✉" },
   { href: "/admin/clients", label: "Clients", icon: "◉" },
@@ -44,8 +45,9 @@ export function AdminSidebar({ mobileOpen, onClose }: AdminSidebarProps) {
       </div>
       <nav className="flex-1 space-y-1 p-3">
         {navItems.map((item) => {
-          const isActive =
-            pathname === item.href || pathname.startsWith(item.href + "/");
+          const isActive = item.exact
+            ? pathname === item.href
+            : pathname === item.href || pathname.startsWith(item.href + "/");
           return (
             <Link
               key={item.href}
