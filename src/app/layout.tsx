@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Crimson_Pro, Source_Sans_3 } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-const crimsonPro = Crimson_Pro({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-crimson",
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const sourceSans = Source_Sans_3({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-source",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#0F0620",
   colorScheme: "dark",
 };
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${crimsonPro.variable} ${sourceSans.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

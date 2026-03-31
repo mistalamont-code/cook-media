@@ -148,7 +148,7 @@ export default function ClientDetailPage() {
                       <p className="text-sm font-medium">{prop.package.name}</p>
                       <p className="text-xs text-brand-text-muted">{formatCurrencyShort(prop.totalPrice)}</p>
                     </div>
-                    <Badge variant={prop.status === "ACCEPTED" ? "success" : prop.status === "SENT" ? "red" : "default"}>
+                    <Badge variant={prop.status === "ACCEPTED" ? "success" : prop.status === "SENT" ? "accent" : "default"}>
                       {prop.status}
                     </Badge>
                   </Link>

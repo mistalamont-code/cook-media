@@ -28,7 +28,7 @@ export default function AdminLayout({
 
       <div className="flex flex-1 flex-col overflow-hidden">
         <AdminHeader onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
-        <main className="flex-1 overflow-y-auto bg-brand-deep p-6">
+        <main className="flex-1 overflow-y-auto bg-[var(--bg-deep)] p-6">
           {children}
         </main>
       </div>

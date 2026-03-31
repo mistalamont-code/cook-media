@@ -18,9 +18,9 @@ interface Inquiry {
   client: { id: string; name: string } | null;
 }
 
-const statusBadgeVariant: Record<string, "default" | "red" | "success" | "warning" | "error"> = {
-  NEW: "red",
-  CONTACTED: "red",
+const statusBadgeVariant: Record<string, "default" | "accent" | "success" | "warning" | "error"> = {
+  NEW: "accent",
+  CONTACTED: "accent",
   PROPOSAL_SENT: "warning",
   BOOKED: "success",
   COMPLETED: "success",

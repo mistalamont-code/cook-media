@@ -13,8 +13,8 @@ export function Card({ children, className, hover, onClick }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border border-white/8 bg-brand-card p-6 transition-[color,border-color,box-shadow,transform] duration-300",
-        isInteractive && "hover:border-brand-red/30 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(196,30,42,0.1)] cursor-pointer",
+        "rounded-lg border border-[var(--accent-border)] bg-[var(--bg-card)] p-6 transition-all duration-300",
+        isInteractive && "hover:border-[var(--accent-border-hover)] hover:-translate-y-0.5 cursor-pointer",
         className
       )}
       onClick={onClick}
@@ -37,11 +37,11 @@ export function CardHeader({ children, className }: { children: React.ReactNode;
 }
 
 export function CardTitle({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h3 className={cn("text-lg font-semibold text-brand-text", className)}>{children}</h3>;
+  return <h3 className={cn("text-lg font-semibold text-[var(--text)]", className)}>{children}</h3>;
 }
 
 export function CardDescription({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("text-sm text-brand-text-muted", className)}>{children}</p>;
+  return <p className={cn("text-sm text-[var(--text-muted)]", className)}>{children}</p>;
 }
 
 export function CardContent({ children, className }: { children: React.ReactNode; className?: string }) {

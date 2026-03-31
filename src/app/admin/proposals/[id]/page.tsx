@@ -23,10 +23,10 @@ interface ProposalDetail {
   addOns: Array<{ price: number; addOn: { name: string } }>;
 }
 
-const statusBadge: Record<string, "default" | "red" | "success" | "error"> = {
+const statusBadge: Record<string, "default" | "accent" | "success" | "error"> = {
   DRAFT: "default",
-  SENT: "red",
-  VIEWED: "red",
+  SENT: "accent",
+  VIEWED: "accent",
   ACCEPTED: "success",
   DECLINED: "error",
   EXPIRED: "default",

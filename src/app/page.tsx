@@ -123,33 +123,33 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-brand-deep">
       {/* Skip link */}
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded focus:bg-brand-red focus:px-4 focus:py-2 focus:text-white focus:text-sm">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded focus:bg-brand-gold focus:px-4 focus:py-2 focus:text-brand-deep focus:text-sm">
         Skip to Main Content
       </a>
 
       {/* ═══ NAVIGATION ═══ */}
-      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[rgba(10,10,10,0.95)] backdrop-blur-2xl">
-        <div className="mx-auto max-w-[1000px] flex items-center justify-between px-6 h-[70px]">
+      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(201,168,76,0.15)] bg-[rgba(15,6,32,0.95)] backdrop-blur-[20px]">
+        <div className="mx-auto max-w-[800px] flex items-center justify-between px-6 h-[70px]">
           <Link href="/" aria-label="COOK/Media home" className="flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={36} height={36} className="rounded-sm" />
-            <span className="text-xl font-normal font-heading tracking-wide">
-              COOK<span className="text-brand-red" aria-hidden="true">/</span>Media
+            <span className="text-xl font-black font-heading text-brand-gold">
+              COOK<span className="text-brand-text">/</span>Media
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Services", "Pricing", "About", "FAQ", "Contact"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-[0.7rem] font-medium uppercase tracking-[2px] text-brand-text-muted hover:text-brand-red transition-colors duration-300">
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-[0.85rem] font-medium uppercase tracking-[0.5px] text-brand-text-muted hover:text-brand-gold transition-colors duration-300">
                 {item}
               </a>
             ))}
             <Link
               href="/inquiry"
-              className="rounded bg-brand-red px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]"
+              className="rounded bg-brand-gold px-6 py-2.5 text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
             >
               Start Your Inquiry
             </Link>
           </div>
-          <Link href="/inquiry" className="md:hidden rounded bg-brand-red px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-white">
+          <Link href="/inquiry" className="md:hidden rounded bg-brand-gold px-4 py-2 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep">
             Inquire
           </Link>
         </div>
@@ -164,32 +164,31 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,10,0.85)] via-[rgba(10,10,10,0.55)] to-[rgba(10,10,10,1)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(15,6,32,0.85)] via-[rgba(26,10,46,0.6)] to-[rgba(15,6,32,1)]" />
 
-        <div className="relative text-center max-w-[800px] mx-auto px-6 py-32 space-y-8">
-          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+        <div className="relative text-center max-w-[800px] mx-auto px-8 py-[120px] space-y-8">
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
             Erie, PA &amp; Beyond
           </p>
-          <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-normal font-heading leading-[1.15]">
-            Your Story,{" "}
-            <span className="bg-gradient-to-r from-brand-red via-[#ff4d5a] to-brand-red bg-clip-text text-transparent">
-              Beautifully Told
+          <h1 className="text-[clamp(3rem,8vw,6rem)] font-black font-heading leading-[1.1]">
+            <span className="bg-gradient-to-br from-brand-gold via-brand-gold-light to-brand-gold bg-clip-text text-transparent">
+              Your Story, Beautifully Told
             </span>
           </h1>
-          <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
-          <p className="text-[clamp(1rem,2.5vw,1.15rem)] font-light text-white/70 leading-relaxed max-w-2xl mx-auto">
+          <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
+          <p className="text-[clamp(1rem,2.5vw,1.3rem)] font-light text-brand-text-muted leading-relaxed max-w-2xl mx-auto">
             Wedding photography, videography, and live sound production &mdash; based in Erie, PA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link
               href="/inquiry"
-              className="rounded bg-brand-red px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
+              className="rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
             >
               Start Your Inquiry
             </Link>
             <a
               href="#services"
-              className="rounded border border-white/20 px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white/90 hover:bg-white/5 hover:-translate-y-0.5 transition-[color,background-color,transform] duration-300"
+              className="rounded border border-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300"
             >
               See Our Services
             </a>
@@ -198,8 +197,8 @@ export default function HomePage() {
       </section>
 
       {/* ═══ ABOUT ═══ */}
-      <section id="about" className="py-[100px] px-6 scroll-mt-[70px]">
-        <div className="mx-auto max-w-[1000px] grid gap-12 md:grid-cols-2 items-center">
+      <section id="about" className="py-[100px] px-8 scroll-mt-[70px]">
+        <div className="mx-auto max-w-[800px] grid gap-12 md:grid-cols-2 items-center">
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
             <Image
               src="/images/about.jpg"
@@ -210,13 +209,13 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 to-transparent" />
           </div>
           <div className="space-y-6">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               Welcome
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading leading-tight">
-              Welcome to COOK<span className="text-brand-red">/</span>Media
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading leading-tight">
+              Welcome to COOK<span className="text-brand-gold">/</span>Media
             </h2>
-            <div className="w-[60px] h-[2px] bg-brand-red" aria-hidden="true" />
+            <div className="w-[60px] h-[2px] bg-brand-gold" aria-hidden="true" />
             <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
               COOK/Media is a full-service media production company based in Erie, PA. We specialize
               in wedding photography and videography, event coverage, and live sound and AV production.
@@ -230,21 +229,21 @@ export default function HomePage() {
       </section>
 
       {/* ═══ SERVICES ═══ */}
-      <section id="services" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
-        <div className="mx-auto max-w-[1000px]">
+      <section id="services" className="py-[100px] px-8 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+        <div className="mx-auto max-w-[800px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               What We Do
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Our Services</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">Our Services</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="group rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden transition-[border-color,transform,box-shadow] duration-300 hover:border-brand-red/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(196,30,42,0.1)]"
+                className="group rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card overflow-hidden transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -256,13 +255,13 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent" />
                 </div>
                 <div className="p-6 space-y-3">
-                  <h3 className="text-lg font-normal font-heading group-hover:text-brand-red transition-colors duration-300">
+                  <h3 className="text-[1rem] font-semibold group-hover:text-brand-gold transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
+                  <p className="text-[0.9rem] text-brand-text-muted leading-[1.6]">
                     {service.description}
                   </p>
-                  <span className="inline-block text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-brand-red pt-1">
+                  <span className="inline-block text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-gold pt-1">
                     Learn More &rarr;
                   </span>
                 </div>
@@ -273,23 +272,23 @@ export default function HomePage() {
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
-      <section className="py-[100px] px-6">
-        <div className="mx-auto max-w-[1000px]">
+      <section className="py-[100px] px-8">
+        <div className="mx-auto max-w-[800px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               The Process
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">How It Works</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">How It Works</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {steps.map((step) => (
-              <div key={step.number} className="text-center space-y-4 rounded-lg border border-white/[0.06] bg-brand-card p-8">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10 text-lg font-bold text-brand-red font-heading">
+              <div key={step.number} className="text-center space-y-4 rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(201,168,76,0.1)] text-lg font-bold text-brand-gold font-heading">
                   {step.number}
                 </span>
-                <h3 className="text-base font-medium font-heading">{step.title}</h3>
-                <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
+                <h3 className="text-[1rem] font-semibold">{step.title}</h3>
+                <p className="text-[0.9rem] text-brand-text-muted leading-[1.6]">
                   {step.description}
                 </p>
               </div>
@@ -299,82 +298,81 @@ export default function HomePage() {
       </section>
 
       {/* ═══ PRICING ═══ */}
-      <section id="pricing" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
-        <div className="mx-auto max-w-[1000px]">
+      <section id="pricing" className="py-[100px] px-8 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+        <div className="mx-auto max-w-[800px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               Investment
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Service Pricing</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">Service Pricing</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
 
           {/* Wedding Packages */}
           <div className="mb-16">
-            <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-8">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-8">
               Wedding Photography
             </h3>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-3">
               {/* Package 1 */}
-              <div className="rounded-lg border-2 border-brand-red bg-brand-card p-8 relative">
-                <span className="absolute -top-3 left-6 bg-brand-red text-white text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
+              <div className="rounded-lg border-2 border-brand-gold bg-brand-card p-8 relative">
+                <span className="absolute -top-3 left-6 bg-brand-gold text-brand-deep text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
                   Most Popular
                 </span>
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 1</p>
-                <p className="text-3xl font-normal font-heading tabular-nums">$3,000</p>
-                <div className="w-10 h-[2px] bg-brand-red mt-4 mb-6" aria-hidden="true" />
-                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Highlight video with drone footage</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Rehearsal dinner coverage</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Ceremony livestream included</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
+                <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 1</p>
+                <p className="text-[2rem] font-bold font-heading text-brand-gold tabular-nums">$3,000</p>
+                <div className="w-10 h-[2px] bg-brand-gold mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.9rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Highlight video with drone footage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Rehearsal dinner coverage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Ceremony livestream included</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-red px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]">
                   Book Package 1
                 </Link>
               </div>
 
               {/* Package 2 */}
-              <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 2</p>
-                <p className="text-3xl font-normal font-heading tabular-nums">$2,000</p>
-                <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
-                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Highlight video</li>
+              <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8">
+                <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 2</p>
+                <p className="text-[2rem] font-bold font-heading text-brand-text tabular-nums">$2,000</p>
+                <div className="w-10 h-[2px] bg-[rgba(201,168,76,0.2)] mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.9rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Highlight video</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300">
                   Book Package 2
                 </Link>
               </div>
 
               {/* Package 3 */}
-              <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
-                <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 3</p>
-                <p className="text-3xl font-normal font-heading tabular-nums">$1,500</p>
-                <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
-                <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> 6-hour photography (1 photographer)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
+              <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8">
+                <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 3</p>
+                <p className="text-[2rem] font-bold font-heading text-brand-text tabular-nums">$1,500</p>
+                <div className="w-10 h-[2px] bg-[rgba(201,168,76,0.2)] mt-4 mb-6" aria-hidden="true" />
+                <ul className="space-y-2.5 text-[0.9rem] text-brand-text-muted leading-relaxed">
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> 6-hour photography (1 photographer)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300">
                   Book Package 3
                 </Link>
               </div>
             </div>
 
-            <p className="text-[0.78rem] text-brand-text-muted/60 mt-6 text-center">
+            <p className="text-[0.78rem] text-brand-text-muted/70 mt-6 text-center">
               All final images available for download with full copyrights. HD Livestreaming Add-On available for $350.
             </p>
           </div>
 
           {/* A La Carte + Event Photography */}
-          <div className="grid gap-6 md:grid-cols-2 mb-16">
-            {/* A La Carte as cards */}
+          <div className="grid gap-5 md:grid-cols-2 mb-16">
             <div>
-              <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
+              <h3 className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-6">
                 Wedding A La Carte
               </h3>
               <div className="space-y-3">
@@ -385,17 +383,16 @@ export default function HomePage() {
                   ["Engagement Session", "$200"],
                   ["HD Livestreaming w/ Pro Sound", "$350"],
                 ].map(([service, price]) => (
-                  <div key={service} className="flex items-center justify-between rounded-lg border border-white/[0.06] bg-brand-card px-5 py-3.5 hover:border-brand-red/20 transition-colors duration-300">
-                    <span className="text-[0.85rem] text-brand-text">{service}</span>
-                    <span className="text-[0.85rem] font-semibold tabular-nums">{price}</span>
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(201,168,76,0.3)] transition-colors duration-300">
+                    <span className="text-[0.9rem] text-brand-text">{service}</span>
+                    <span className="text-[0.9rem] font-semibold tabular-nums text-brand-gold">{price}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Event Photography */}
             <div>
-              <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
+              <h3 className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-6">
                 Event Photography
               </h3>
               <div className="space-y-3">
@@ -403,13 +400,13 @@ export default function HomePage() {
                   ["Hourly Rate", "$75/hr"],
                   ["Additional Hours (overtime)", "$75/hr"],
                 ].map(([service, price]) => (
-                  <div key={service} className="flex items-center justify-between rounded-lg border border-white/[0.06] bg-brand-card px-5 py-3.5 hover:border-brand-red/20 transition-colors duration-300">
-                    <span className="text-[0.85rem] text-brand-text">{service}</span>
-                    <span className="text-[0.85rem] font-semibold tabular-nums">{price}</span>
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(201,168,76,0.3)] transition-colors duration-300">
+                    <span className="text-[0.9rem] text-brand-text">{service}</span>
+                    <span className="text-[0.9rem] font-semibold tabular-nums text-brand-gold">{price}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-[0.78rem] text-brand-text-muted/60 mt-4">
+              <p className="text-[0.78rem] text-brand-text-muted/70 mt-4">
                 Custom quotes available for multi-day events and large-scale productions.
               </p>
             </div>
@@ -417,17 +414,17 @@ export default function HomePage() {
 
           {/* Live Sound & AV */}
           <div className="mb-16">
-            <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-6">
               Live Sound & AV
             </h3>
-            <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center space-y-4">
-              <p className="text-[1rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
+            <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 text-center space-y-4">
+              <p className="text-[1.05rem] text-brand-text-muted leading-[1.8] max-w-xl mx-auto">
                 Custom quotes based on event type, venue size, and equipment requirements.
                 Contact us for a tailored proposal.
               </p>
               <Link
                 href="/inquiry?service=LIVE_SOUND"
-                className="inline-block rounded bg-brand-red px-7 py-3 text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]"
+                className="inline-block rounded bg-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
               >
                 Get a Quote
               </Link>
@@ -435,11 +432,11 @@ export default function HomePage() {
           </div>
 
           {/* Booking policy */}
-          <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-3">
+          <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 text-center">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-3">
               Booking Policy
             </p>
-            <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
+            <p className="text-[1.05rem] text-brand-text-muted leading-[1.8] max-w-xl mx-auto">
               50% of package due to reserve your date. All packages subject to applicable sales tax.
               Cash, check, and credit card accepted. All final images delivered by online gallery.
             </p>
@@ -448,7 +445,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ OUR COMMITMENT ═══ */}
-      <section className="relative py-[120px] px-6">
+      <section className="relative py-[120px] px-8">
         <Image
           src="/images/commitment.jpg"
           alt="Cook Media portfolio showcase"
@@ -456,20 +453,20 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-deep/90 via-brand-deep/70 to-brand-deep/90" />
-        <div className="relative mx-auto max-w-[1000px]">
+        <div className="relative mx-auto max-w-[800px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               Why Us
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Our Commitment</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">Our Commitment</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {commitments.map((item) => (
-              <div key={item.title} className="text-center space-y-4 rounded-lg border border-white/[0.06] bg-brand-card/80 backdrop-blur-sm p-8 transition-[border-color,transform] duration-300 hover:border-brand-red/20 hover:-translate-y-0.5">
-                <span className="text-brand-red text-2xl" aria-hidden="true">{item.icon}</span>
-                <h3 className="text-base font-medium font-heading">{item.title}</h3>
-                <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
+              <div key={item.title} className="text-center space-y-4 rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
+                <span className="text-brand-gold text-2xl" aria-hidden="true">{item.icon}</span>
+                <h3 className="text-[1rem] font-semibold">{item.title}</h3>
+                <p className="text-[0.9rem] text-brand-text-muted leading-[1.6]">
                   {item.description}
                 </p>
               </div>
@@ -479,19 +476,19 @@ export default function HomePage() {
       </section>
 
       {/* ═══ TESTIMONIALS ═══ */}
-      <section className="py-[100px] px-6">
-        <div className="mx-auto max-w-[1000px]">
+      <section className="py-[100px] px-8">
+        <div className="mx-auto max-w-[800px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               What They Say
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Client Love</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">Client Love</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {testimonials.map((t, i) => (
-              <div key={i} className="rounded-lg border border-white/[0.06] bg-brand-card p-8 space-y-4">
-                <p className="text-[0.95rem] text-brand-text-muted leading-relaxed italic">
+              <div key={i} className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 space-y-4 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
+                <p className="text-[1.05rem] text-brand-text-muted leading-[1.8] italic font-heading">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div>
@@ -505,13 +502,13 @@ export default function HomePage() {
       </section>
 
       {/* ═══ PORTFOLIO / OUR WORK ═══ */}
-      <section className="py-[100px] px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+      <section className="py-[100px] px-8 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[700px] text-center space-y-6">
-          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
             Our Work
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Recent Projects</h2>
-          <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+          <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">Recent Projects</h2>
+          <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
             Gallery coming soon. Follow us on Instagram for our latest work.
           </p>
@@ -519,7 +516,7 @@ export default function HomePage() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded border border-brand-red/40 px-7 py-3 text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300"
+            className="inline-block rounded border border-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300"
           >
             Follow on Instagram
           </a>
@@ -527,24 +524,24 @@ export default function HomePage() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section id="faq" className="py-[100px] px-6 scroll-mt-[70px]">
+      <section id="faq" className="py-[100px] px-8 scroll-mt-[70px]">
         <div className="mx-auto max-w-[700px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
               Questions
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">FAQ&apos;s</h2>
-            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+            <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">FAQ&apos;s</h2>
+            <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           </div>
           <div className="space-y-3">
             {faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-lg border border-white/[0.06] bg-brand-card transition-[border-color] duration-300 hover:border-brand-red/20"
+                className="group rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card transition-[border-color] duration-300 hover:border-[rgba(201,168,76,0.3)]"
               >
                 <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-[0.9rem] font-semibold list-none">
                   {faq.q}
-                  <span aria-hidden="true" className="text-brand-red text-lg ml-4 group-open:rotate-45 transition-transform duration-300">
+                  <span aria-hidden="true" className="text-brand-gold text-lg ml-4 group-open:rotate-45 transition-transform duration-300">
                     +
                   </span>
                 </summary>
@@ -560,30 +557,30 @@ export default function HomePage() {
       </section>
 
       {/* ═══ CONTACT CTA ═══ */}
-      <section id="contact" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+      <section id="contact" className="py-[100px] px-8 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[600px] text-center space-y-8">
-          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
             Get in Touch
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">
+          <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold font-heading">
             Let&apos;s Create Something Together
           </h2>
-          <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+          <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
             Tell us about your event and we&apos;ll take it from there. We review your details,
             send a custom proposal tailored to your needs, and once you approve, we lock in your date.
           </p>
           <Link
             href="/inquiry"
-            className="inline-block rounded bg-brand-red px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
+            className="inline-block rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
           >
             Start Your Inquiry
           </Link>
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4 text-sm text-brand-text-muted">
-            <a href="mailto:corey@cook-media.com" className="hover:text-brand-red transition-colors duration-300">
+            <a href="mailto:corey@cook-media.com" className="hover:text-brand-gold transition-colors duration-300">
               corey@cook-media.com
             </a>
-            <a href="tel:+18145662733" className="hover:text-brand-red transition-colors duration-300">
+            <a href="tel:+18145662733" className="hover:text-brand-gold transition-colors duration-300">
               (814) 566-2733
             </a>
           </div>
@@ -591,24 +588,24 @@ export default function HomePage() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="border-t border-white/[0.06] bg-black py-16 px-6">
+      <footer className="border-t border-[rgba(201,168,76,0.15)] bg-brand-deep py-16 px-8">
         <div className="mx-auto max-w-[800px] text-center space-y-6">
           <Link href="/" className="inline-flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={28} height={28} className="rounded-sm" />
-            <span className="text-xl font-normal font-heading tracking-wide">
-              COOK<span className="text-brand-red">/</span>Media
+            <span className="text-xl font-black font-heading text-brand-gold">
+              COOK<span className="text-brand-text">/</span>Media
             </span>
           </Link>
           <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
             Your media partner for photography, videography, and live sound production.
             Based in Erie, PA &mdash; ready to bring our craft wherever your story unfolds.
           </p>
-          <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
-          <p className="text-[0.7rem] text-brand-text-muted/60 tracking-wide">
+          <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
+          <p className="text-[0.78rem] text-brand-text-muted/70 tracking-wide">
             Cook Media LLC &middot; Erie, PA &middot; corey@cook-media.com
           </p>
           <div className="flex justify-center gap-8 pt-2">
-            <Link href="/inquiry" className="text-[0.7rem] font-medium uppercase tracking-[2px] text-brand-text-muted hover:text-brand-red transition-colors duration-300">
+            <Link href="/inquiry" className="text-[0.78rem] font-medium uppercase tracking-[0.5px] text-brand-text-muted hover:text-brand-gold transition-colors duration-300 underline underline-offset-4">
               Start Your Inquiry
             </Link>
           </div>

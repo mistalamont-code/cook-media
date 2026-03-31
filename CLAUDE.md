@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Cook Media LLC web application — a single platform for a solo-operated media production company (weddings, live sound/AV, book publishing) that automates the full client lifecycle: inquiry → proposal → contract → payment → event → delivery. The detailed business spec, pricing, and feature roadmap live in `../CLAUDE-cook-media.md`.
+Cook Media LLC web application — a single platform for a solo-operated media production company (weddings, live sound/AV) that automates the full client lifecycle: inquiry → proposal → contract → payment → event → delivery. The detailed business spec, pricing, and feature roadmap live in `../CLAUDE-cook-media.md`.
 
 ## Tech Stack
 

@@ -1,51 +1,73 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand colors — Black, Red, White */
-  --color-brand-red: #C41E2A;
-  --color-brand-red-light: #E63037;
-  --color-brand-red-dark: #9A1620;
-  --color-brand-red-glow: rgba(196, 30, 42, 0.15);
+  /* ── Background depth scale (darkest -> lightest) ── */
+  --color-brand-deep: var(--bg-deep, #111111);
+  --color-brand-dark: var(--bg-dark, #1a1a1a);
+  --color-brand-mid: var(--bg-mid, #2a2a2a);
+  --color-brand-card: var(--bg-card, #222222);
+  --color-brand-surface: var(--bg-surface, #2e2e2e);
+  --color-brand-surface-light: var(--bg-hover, #3a3a3a);
 
-  /* Background depth scale (darkest → lightest) */
-  --color-brand-deep: #0A0A0A;
-  --color-brand-dark: #111111;
-  --color-brand-mid: #1A1A1A;
-  --color-brand-card: #161616;
-  --color-brand-surface: #1E1E1E;
-  --color-brand-surface-light: #2A2A2A;
+  /* ── Accent colors ── */
+  --color-brand-accent: var(--accent, #cccccc);
+  --color-brand-accent-light: var(--accent-light, #eeeeee);
+  --color-brand-accent-subtle: var(--accent-subtle, #999999);
 
-  /* Legacy aliases for compatibility */
-  --color-brand-bg: #0A0A0A;
-  --color-brand-border: rgba(255, 255, 255, 0.08);
+  /* ── Text colors ── */
+  --color-brand-text: var(--text, #f5f5f5);
+  --color-brand-text-muted: var(--text-muted, #aaaaaa);
 
-  /* Text */
-  --color-brand-text: #F5F5F5;
-  --color-brand-text-muted: #A0A0A0;
-
-  /* Semantic */
+  /* ── Semantic ── */
   --color-brand-success: #22C55E;
   --color-brand-warning: #F59E0B;
-  --color-brand-error: #EF4444;
+  --color-brand-error: var(--warning, #E74C3C);
 
-  /* Fonts */
-  --font-heading: var(--font-crimson);
-  --font-body: var(--font-source);
+  /* ── Fonts ── */
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
+:root {
+  /* ── Background depth scale (darkest -> lightest) ── */
+  --bg-deep:       #0F0620;
+  --bg-dark:       #1A0A2E;
+  --bg-mid:        #2D1B4E;
+  --bg-card:       #231340;
+  --bg-surface:    #2E1A50;
+  --bg-hover:      #3D2766;
+
+  /* ── Accent colors ── */
+  --accent:        #D4AF37;
+  --accent-light:  #F0D060;
+  --accent-subtle: #C9A84C;
+
+  /* ── Text colors ── */
+  --text:          #F5F5F5;
+  --text-muted:    #B8A8D0;
+
+  /* ── Semantic ── */
+  --warning:       #E74C3C;
+  --warning-bg:    rgba(192,57,43,0.08);
+
+  /* ── Derived values ── */
+  --accent-glow:         rgba(201,168,76,0.15);
+  --accent-border:       rgba(201,168,76,0.1);
+  --accent-border-hover: rgba(201,168,76,0.3);
+  --glass-bg:            rgba(15,6,32,0.95);
 }
 
 body {
-  background: var(--color-brand-deep);
-  color: var(--color-brand-text);
+  background: var(--bg-deep);
+  color: var(--text);
   font-family: var(--font-body), sans-serif;
-  font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   touch-action: manipulation;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading), serif;
-  font-weight: 400;
   text-wrap: balance;
 }
 
@@ -54,7 +76,7 @@ h1, h2, h3, h4 {
   font-variant-numeric: tabular-nums;
 }
 
-/* Reduced motion: disable animations and transitions */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -64,21 +86,21 @@ h1, h2, h3, h4 {
   }
 }
 
-/* Smooth scroll for anchor links */
+/* Smooth scroll */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Focus visible ring for interactive elements */
+/* Focus visible */
 :focus-visible {
-  outline: 2px solid var(--color-brand-red);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* Native selects on dark bg */
 select {
-  background-color: var(--color-brand-surface);
-  color: var(--color-brand-text);
+  background-color: var(--bg-surface);
+  color: var(--text);
 }

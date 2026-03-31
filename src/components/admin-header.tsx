@@ -23,20 +23,20 @@ export function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
     .find(([path]) => pathname.startsWith(path))?.[1] || "Dashboard";
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-white/8 bg-brand-dark/95 backdrop-blur-xl px-6">
+    <header className="flex h-16 items-center justify-between border-b border-[var(--accent-border)] bg-[var(--glass-bg)] backdrop-blur-[20px] px-6">
       <div className="flex items-center gap-3">
         <button
           onClick={onToggleSidebar}
-          className="text-brand-text-muted hover:text-brand-text text-xl md:hidden"
+          className="text-[var(--text-muted)] hover:text-[var(--text)] text-xl md:hidden"
           aria-label="Toggle sidebar"
         >
-          <span aria-hidden="true">☰</span>
+          <span aria-hidden="true">{"\u2630"}</span>
         </button>
-        <h1 className="text-lg font-semibold text-brand-text">{title}</h1>
+        <h1 className="text-lg font-semibold text-[var(--text)]">{title}</h1>
       </div>
       <div className="flex items-center gap-4">
-        <span className="text-sm text-brand-text-muted">
-          COOK<span className="text-brand-red">/</span>Media Admin
+        <span className="text-sm text-[var(--text-muted)]">
+          COOK<span className="text-[var(--accent)]">/</span>Media Admin
         </span>
       </div>
     </header>
