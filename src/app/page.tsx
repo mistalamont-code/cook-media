@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1000px] flex items-center justify-between px-6 h-[70px]">
           <Link href="/" aria-label="COOK/Media home" className="flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={36} height={36} className="rounded-sm" />
-            <span className="text-xl font-black font-heading tracking-tight">
+            <span className="text-xl font-normal font-heading tracking-wide">
               COOK<span className="text-brand-red" aria-hidden="true">/</span>Media
             </span>
           </Link>
@@ -167,10 +167,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,10,0.85)] via-[rgba(10,10,10,0.55)] to-[rgba(10,10,10,1)]" />
 
         <div className="relative text-center max-w-[800px] mx-auto px-6 py-32 space-y-8">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
             Erie, PA &amp; Beyond
           </p>
-          <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-black font-heading leading-[1.1]">
+          <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-normal font-heading leading-[1.15]">
             Your Story,{" "}
             <span className="bg-gradient-to-r from-brand-red via-[#ff4d5a] to-brand-red bg-clip-text text-transparent">
               Beautifully Told
@@ -210,10 +210,10 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 to-transparent" />
           </div>
           <div className="space-y-6">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               Welcome
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading leading-tight">
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading leading-tight">
               Welcome to COOK<span className="text-brand-red">/</span>Media
             </h2>
             <div className="w-[60px] h-[2px] bg-brand-red" aria-hidden="true" />
@@ -233,10 +233,10 @@ export default function HomePage() {
       <section id="services" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               What We Do
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Our Services</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Our Services</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -256,7 +256,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent" />
                 </div>
                 <div className="p-6 space-y-3">
-                  <h3 className="text-lg font-bold font-heading group-hover:text-brand-red transition-colors duration-300">
+                  <h3 className="text-lg font-normal font-heading group-hover:text-brand-red transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
@@ -276,10 +276,10 @@ export default function HomePage() {
       <section className="py-[100px] px-6">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               The Process
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">How It Works</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">How It Works</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -288,7 +288,7 @@ export default function HomePage() {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10 text-lg font-bold text-brand-red font-heading">
                   {step.number}
                 </span>
-                <h3 className="text-base font-bold font-heading">{step.title}</h3>
+                <h3 className="text-base font-medium font-heading">{step.title}</h3>
                 <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
                   {step.description}
                 </p>
@@ -302,16 +302,16 @@ export default function HomePage() {
       <section id="pricing" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               Investment
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Service Pricing</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Service Pricing</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
 
           {/* Wedding Packages */}
           <div className="mb-16">
-            <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-8">
+            <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-8">
               Wedding Photography
             </h3>
             <div className="grid gap-6 md:grid-cols-3">
@@ -321,7 +321,7 @@ export default function HomePage() {
                   Most Popular
                 </span>
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 1</p>
-                <p className="text-3xl font-bold font-heading tabular-nums">$3,000</p>
+                <p className="text-3xl font-normal font-heading tabular-nums">$3,000</p>
                 <div className="w-10 h-[2px] bg-brand-red mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
                   <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
@@ -338,7 +338,7 @@ export default function HomePage() {
               {/* Package 2 */}
               <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 2</p>
-                <p className="text-3xl font-bold font-heading tabular-nums">$2,000</p>
+                <p className="text-3xl font-normal font-heading tabular-nums">$2,000</p>
                 <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
                   <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
@@ -353,7 +353,7 @@ export default function HomePage() {
               {/* Package 3 */}
               <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 3</p>
-                <p className="text-3xl font-bold font-heading tabular-nums">$1,500</p>
+                <p className="text-3xl font-normal font-heading tabular-nums">$1,500</p>
                 <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
                   <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> 6-hour photography (1 photographer)</li>
@@ -374,7 +374,7 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-2 mb-16">
             {/* A La Carte as cards */}
             <div>
-              <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+              <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
                 Wedding A La Carte
               </h3>
               <div className="space-y-3">
@@ -395,7 +395,7 @@ export default function HomePage() {
 
             {/* Event Photography */}
             <div>
-              <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+              <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
                 Event Photography
               </h3>
               <div className="space-y-3">
@@ -417,7 +417,7 @@ export default function HomePage() {
 
           {/* Live Sound & AV */}
           <div className="mb-16">
-            <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+            <h3 className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-6">
               Live Sound & AV
             </h3>
             <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center space-y-4">
@@ -436,7 +436,7 @@ export default function HomePage() {
 
           {/* Booking policy */}
           <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-3">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red mb-3">
               Booking Policy
             </p>
             <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
@@ -458,17 +458,17 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-deep/90 via-brand-deep/70 to-brand-deep/90" />
         <div className="relative mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               Why Us
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Our Commitment</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Our Commitment</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {commitments.map((item) => (
               <div key={item.title} className="text-center space-y-4 rounded-lg border border-white/[0.06] bg-brand-card/80 backdrop-blur-sm p-8 transition-[border-color,transform] duration-300 hover:border-brand-red/20 hover:-translate-y-0.5">
                 <span className="text-brand-red text-2xl" aria-hidden="true">{item.icon}</span>
-                <h3 className="text-base font-bold font-heading">{item.title}</h3>
+                <h3 className="text-base font-medium font-heading">{item.title}</h3>
                 <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
                   {item.description}
                 </p>
@@ -482,10 +482,10 @@ export default function HomePage() {
       <section className="py-[100px] px-6">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               What They Say
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Client Love</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Client Love</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -507,10 +507,10 @@ export default function HomePage() {
       {/* ═══ PORTFOLIO / OUR WORK ═══ */}
       <section className="py-[100px] px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[700px] text-center space-y-6">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
             Our Work
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Recent Projects</h2>
+          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">Recent Projects</h2>
           <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
             Gallery coming soon. Follow us on Instagram for our latest work.
@@ -530,10 +530,10 @@ export default function HomePage() {
       <section id="faq" className="py-[100px] px-6 scroll-mt-[70px]">
         <div className="mx-auto max-w-[700px]">
           <div className="text-center space-y-4 mb-16">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
               Questions
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">FAQ&apos;s</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">FAQ&apos;s</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
           <div className="space-y-3">
@@ -562,10 +562,10 @@ export default function HomePage() {
       {/* ═══ CONTACT CTA ═══ */}
       <section id="contact" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[600px] text-center space-y-8">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+          <p className="text-[0.7rem] font-normal uppercase tracking-[4px] text-brand-red">
             Get in Touch
           </p>
-          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">
+          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-normal font-heading">
             Let&apos;s Create Something Together
           </h2>
           <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
@@ -595,7 +595,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[800px] text-center space-y-6">
           <Link href="/" className="inline-flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={28} height={28} className="rounded-sm" />
-            <span className="text-xl font-black font-heading tracking-tight">
+            <span className="text-xl font-normal font-heading tracking-wide">
               COOK<span className="text-brand-red">/</span>Media
             </span>
           </Link>

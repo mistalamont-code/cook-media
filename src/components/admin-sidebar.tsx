@@ -31,7 +31,7 @@ export function AdminSidebar({ mobileOpen, onClose }: AdminSidebarProps) {
       )}
     >
       <div className="flex h-16 items-center justify-between border-b border-white/8 px-6">
-        <Link href="/admin" className="text-xl font-black font-heading">
+        <Link href="/admin" className="text-xl font-normal font-heading tracking-wide">
           COOK<span className="text-brand-red">/</span>Media
         </Link>
         {/* Close button on mobile */}

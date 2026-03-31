@@ -29,21 +29,23 @@
   --color-brand-error: #EF4444;
 
   /* Fonts */
-  --font-heading: var(--font-playfair);
-  --font-body: var(--font-inter);
+  --font-heading: var(--font-crimson);
+  --font-body: var(--font-source);
 }
 
 body {
   background: var(--color-brand-deep);
   color: var(--color-brand-text);
   font-family: var(--font-body), sans-serif;
-  line-height: 1.7;
+  font-weight: 300;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
   touch-action: manipulation;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading), serif;
+  font-weight: 400;
   text-wrap: balance;
 }
 
