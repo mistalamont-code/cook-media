@@ -123,17 +123,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-brand-deep">
       {/* Skip link */}
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded focus:bg-brand-gold focus:px-4 focus:py-2 focus:text-brand-deep focus:text-sm">
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded focus:bg-brand-gold focus:px-4 focus:py-2 focus:text-white focus:text-sm">
         Skip to Main Content
       </a>
 
       {/* ═══ NAVIGATION ═══ */}
-      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(201,168,76,0.15)] bg-[rgba(15,6,32,0.95)] backdrop-blur-[20px]">
+      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(196,30,42,0.15)] bg-[rgba(10,10,10,0.95)] backdrop-blur-[20px]">
         <div className="mx-auto max-w-[800px] flex items-center justify-between px-6 h-[70px]">
           <Link href="/" aria-label="COOK/Media home" className="flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={36} height={36} className="rounded-sm" />
-            <span className="text-xl font-black font-heading text-brand-gold">
-              COOK<span className="text-brand-text">/</span>Media
+            <span className="text-xl font-black font-heading font-heading">
+              COOK<span className="text-[var(--accent)]">/</span>Media
             </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
@@ -144,12 +144,12 @@ export default function HomePage() {
             ))}
             <Link
               href="/inquiry"
-              className="rounded bg-brand-gold px-6 py-2.5 text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
+              className="rounded bg-brand-gold px-6 py-2.5 text-[0.9rem] font-semibold uppercase tracking-[1px] text-white hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(196,30,42,0.3)]"
             >
               Start Your Inquiry
             </Link>
           </div>
-          <Link href="/inquiry" className="md:hidden rounded bg-brand-gold px-4 py-2 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep">
+          <Link href="/inquiry" className="md:hidden rounded bg-brand-gold px-4 py-2 text-[0.85rem] font-semibold uppercase tracking-[1px] text-white">
             Inquire
           </Link>
         </div>
@@ -164,16 +164,15 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(15,6,32,0.85)] via-[rgba(26,10,46,0.6)] to-[rgba(15,6,32,1)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,10,0.85)] via-[rgba(10,10,10,0.6)] to-[rgba(10,10,10,1)]" />
 
         <div className="relative text-center max-w-[800px] mx-auto px-8 py-[120px] space-y-8">
           <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold">
             Erie, PA &amp; Beyond
           </p>
           <h1 className="text-[clamp(3rem,8vw,6rem)] font-black font-heading leading-[1.1]">
-            <span className="bg-gradient-to-br from-brand-gold via-brand-gold-light to-brand-gold bg-clip-text text-transparent">
-              Your Story, Beautifully Told
-            </span>
+            Your Story,{" "}
+            <span className="text-[var(--accent)]">Beautifully Told</span>
           </h1>
           <div className="w-[60px] h-[2px] bg-brand-gold mx-auto" aria-hidden="true" />
           <p className="text-[clamp(1rem,2.5vw,1.3rem)] font-light text-brand-text-muted leading-relaxed max-w-2xl mx-auto">
@@ -182,13 +181,13 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link
               href="/inquiry"
-              className="rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
+              className="rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-white hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(196,30,42,0.3)]"
             >
               Start Your Inquiry
             </Link>
             <a
               href="#services"
-              className="rounded border border-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300"
+              className="rounded border border-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(196,30,42,0.1)] hover:-translate-y-0.5 transition-all duration-300"
             >
               See Our Services
             </a>
@@ -243,7 +242,7 @@ export default function HomePage() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="group rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card overflow-hidden transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5"
+                className="group rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card overflow-hidden transition-all duration-300 hover:border-[rgba(196,30,42,0.3)] hover:-translate-y-0.5"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -283,8 +282,8 @@ export default function HomePage() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {steps.map((step) => (
-              <div key={step.number} className="text-center space-y-4 rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(201,168,76,0.1)] text-lg font-bold text-brand-gold font-heading">
+              <div key={step.number} className="text-center space-y-4 rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8 transition-all duration-300 hover:border-[rgba(196,30,42,0.3)] hover:-translate-y-0.5">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(196,30,42,0.1)] text-lg font-bold text-brand-gold font-heading">
                   {step.number}
                 </span>
                 <h3 className="text-[1rem] font-semibold">{step.title}</h3>
@@ -316,7 +315,7 @@ export default function HomePage() {
             <div className="grid gap-5 md:grid-cols-3">
               {/* Package 1 */}
               <div className="rounded-lg border-2 border-brand-gold bg-brand-card p-8 relative">
-                <span className="absolute -top-3 left-6 bg-brand-gold text-brand-deep text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
+                <span className="absolute -top-3 left-6 bg-brand-gold text-white text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
                   Most Popular
                 </span>
                 <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 1</p>
@@ -329,36 +328,36 @@ export default function HomePage() {
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Ceremony livestream included</li>
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-white hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(196,30,42,0.3)]">
                   Book Package 1
                 </Link>
               </div>
 
               {/* Package 2 */}
-              <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8">
+              <div className="rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8">
                 <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 2</p>
                 <p className="text-[2rem] font-bold font-heading text-brand-text tabular-nums">$2,000</p>
-                <div className="w-10 h-[2px] bg-[rgba(201,168,76,0.2)] mt-4 mb-6" aria-hidden="true" />
+                <div className="w-10 h-[2px] bg-[rgba(196,30,42,0.2)] mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.9rem] text-brand-text-muted leading-relaxed">
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Highlight video</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(196,30,42,0.1)] hover:-translate-y-0.5 transition-all duration-300">
                   Book Package 2
                 </Link>
               </div>
 
               {/* Package 3 */}
-              <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8">
+              <div className="rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8">
                 <p className="text-[0.75rem] font-semibold uppercase tracking-[2px] text-brand-text-muted mb-2">Package 3</p>
                 <p className="text-[2rem] font-bold font-heading text-brand-text tabular-nums">$1,500</p>
-                <div className="w-10 h-[2px] bg-[rgba(201,168,76,0.2)] mt-4 mb-6" aria-hidden="true" />
+                <div className="w-10 h-[2px] bg-[rgba(196,30,42,0.2)] mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.9rem] text-brand-text-muted leading-relaxed">
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> 6-hour photography (1 photographer)</li>
                   <li className="flex items-start gap-2"><span className="text-brand-gold mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
-                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300">
+                <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-gold px-6 py-3 text-center text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(196,30,42,0.1)] hover:-translate-y-0.5 transition-all duration-300">
                   Book Package 3
                 </Link>
               </div>
@@ -383,7 +382,7 @@ export default function HomePage() {
                   ["Engagement Session", "$200"],
                   ["HD Livestreaming w/ Pro Sound", "$350"],
                 ].map(([service, price]) => (
-                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(201,168,76,0.3)] transition-colors duration-300">
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(196,30,42,0.3)] transition-colors duration-300">
                     <span className="text-[0.9rem] text-brand-text">{service}</span>
                     <span className="text-[0.9rem] font-semibold tabular-nums text-brand-gold">{price}</span>
                   </div>
@@ -400,7 +399,7 @@ export default function HomePage() {
                   ["Hourly Rate", "$75/hr"],
                   ["Additional Hours (overtime)", "$75/hr"],
                 ].map(([service, price]) => (
-                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(201,168,76,0.3)] transition-colors duration-300">
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card px-5 py-3.5 hover:border-[rgba(196,30,42,0.3)] transition-colors duration-300">
                     <span className="text-[0.9rem] text-brand-text">{service}</span>
                     <span className="text-[0.9rem] font-semibold tabular-nums text-brand-gold">{price}</span>
                   </div>
@@ -417,14 +416,14 @@ export default function HomePage() {
             <h3 className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-6">
               Live Sound & AV
             </h3>
-            <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 text-center space-y-4">
+            <div className="rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8 text-center space-y-4">
               <p className="text-[1.05rem] text-brand-text-muted leading-[1.8] max-w-xl mx-auto">
                 Custom quotes based on event type, venue size, and equipment requirements.
                 Contact us for a tailored proposal.
               </p>
               <Link
                 href="/inquiry?service=LIVE_SOUND"
-                className="inline-block rounded bg-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
+                className="inline-block rounded bg-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-white hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(196,30,42,0.3)]"
               >
                 Get a Quote
               </Link>
@@ -432,7 +431,7 @@ export default function HomePage() {
           </div>
 
           {/* Booking policy */}
-          <div className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 text-center">
+          <div className="rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8 text-center">
             <p className="text-[0.75rem] font-semibold uppercase tracking-[3px] text-brand-gold mb-3">
               Booking Policy
             </p>
@@ -463,7 +462,7 @@ export default function HomePage() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {commitments.map((item) => (
-              <div key={item.title} className="text-center space-y-4 rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
+              <div key={item.title} className="text-center space-y-4 rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-[rgba(196,30,42,0.3)] hover:-translate-y-0.5">
                 <span className="text-brand-gold text-2xl" aria-hidden="true">{item.icon}</span>
                 <h3 className="text-[1rem] font-semibold">{item.title}</h3>
                 <p className="text-[0.9rem] text-brand-text-muted leading-[1.6]">
@@ -487,7 +486,7 @@ export default function HomePage() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {testimonials.map((t, i) => (
-              <div key={i} className="rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card p-8 space-y-4 transition-all duration-300 hover:border-[rgba(201,168,76,0.3)] hover:-translate-y-0.5">
+              <div key={i} className="rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card p-8 space-y-4 transition-all duration-300 hover:border-[rgba(196,30,42,0.3)] hover:-translate-y-0.5">
                 <p className="text-[1.05rem] text-brand-text-muted leading-[1.8] italic font-heading">
                   &ldquo;{t.quote}&rdquo;
                 </p>
@@ -516,7 +515,7 @@ export default function HomePage() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded border border-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(201,168,76,0.1)] hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-block rounded border border-brand-gold px-7 py-3 text-[0.85rem] font-semibold uppercase tracking-[1px] text-brand-gold hover:bg-[rgba(196,30,42,0.1)] hover:-translate-y-0.5 transition-all duration-300"
           >
             Follow on Instagram
           </a>
@@ -537,7 +536,7 @@ export default function HomePage() {
             {faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-lg border border-[rgba(201,168,76,0.1)] bg-brand-card transition-[border-color] duration-300 hover:border-[rgba(201,168,76,0.3)]"
+                className="group rounded-lg border border-[rgba(196,30,42,0.1)] bg-brand-card transition-[border-color] duration-300 hover:border-[rgba(196,30,42,0.3)]"
               >
                 <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-[0.9rem] font-semibold list-none">
                   {faq.q}
@@ -572,7 +571,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/inquiry"
-            className="inline-block rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-brand-deep hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(201,168,76,0.3)]"
+            className="inline-block rounded bg-brand-gold px-9 py-[14px] text-[0.9rem] font-semibold uppercase tracking-[1px] text-white hover:bg-brand-gold-light hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_30px_rgba(196,30,42,0.3)]"
           >
             Start Your Inquiry
           </Link>
@@ -588,12 +587,12 @@ export default function HomePage() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="border-t border-[rgba(201,168,76,0.15)] bg-brand-deep py-16 px-8">
+      <footer className="border-t border-[rgba(196,30,42,0.15)] bg-brand-deep py-16 px-8">
         <div className="mx-auto max-w-[800px] text-center space-y-6">
           <Link href="/" className="inline-flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={28} height={28} className="rounded-sm" />
-            <span className="text-xl font-black font-heading text-brand-gold">
-              COOK<span className="text-brand-text">/</span>Media
+            <span className="text-xl font-black font-heading font-heading">
+              COOK<span className="text-[var(--accent)]">/</span>Media
             </span>
           </Link>
           <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">

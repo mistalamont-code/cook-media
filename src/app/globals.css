@@ -30,31 +30,31 @@
 
 :root {
   /* ── Background depth scale (darkest -> lightest) ── */
-  --bg-deep:       #0F0620;
-  --bg-dark:       #1A0A2E;
-  --bg-mid:        #2D1B4E;
-  --bg-card:       #231340;
-  --bg-surface:    #2E1A50;
-  --bg-hover:      #3D2766;
+  --bg-deep:       #0A0A0A;
+  --bg-dark:       #111111;
+  --bg-mid:        #1A1A1A;
+  --bg-card:       #161616;
+  --bg-surface:    #1E1E1E;
+  --bg-hover:      #2A2A2A;
 
   /* ── Accent colors ── */
-  --accent:        #D4AF37;
-  --accent-light:  #F0D060;
-  --accent-subtle: #C9A84C;
+  --accent:        #C41E2A;
+  --accent-light:  #E63037;
+  --accent-subtle: #9A1620;
 
   /* ── Text colors ── */
   --text:          #F5F5F5;
-  --text-muted:    #B8A8D0;
+  --text-muted:    #A0A0A0;
 
   /* ── Semantic ── */
-  --warning:       #E74C3C;
-  --warning-bg:    rgba(192,57,43,0.08);
+  --warning:       #EF4444;
+  --warning-bg:    rgba(239,68,68,0.08);
 
   /* ── Derived values ── */
-  --accent-glow:         rgba(201,168,76,0.15);
-  --accent-border:       rgba(201,168,76,0.1);
-  --accent-border-hover: rgba(201,168,76,0.3);
-  --glass-bg:            rgba(15,6,32,0.95);
+  --accent-glow:         rgba(196,30,42,0.15);
+  --accent-border:       rgba(255,255,255,0.08);
+  --accent-border-hover: rgba(196,30,42,0.3);
+  --glass-bg:            rgba(10,10,10,0.95);
 }
 
 body {

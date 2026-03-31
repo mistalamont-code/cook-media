@@ -352,7 +352,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
           <Input
             label="Event Date"
             id="eventDate"
-            placeholder="e.g., June 15, 2026"
+            type="date"
             value={form.eventDate}
             onChange={(e) => update("eventDate", e.target.value)}
           />

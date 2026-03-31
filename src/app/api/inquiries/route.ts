@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { ServiceType, InquiryStatus } from "@/generated/prisma/client";
 import { sendEmail } from "@/lib/google/gmail";
-import { inquiryConfirmationEmail } from "@/lib/email-templates";
+import { inquiryConfirmationEmail, inquiryNotificationEmail } from "@/lib/email-templates";
 import { requireAdmin } from "@/lib/auth";
 
 // POST /api/inquiries — Public: submit inquiry form
@@ -34,12 +34,7 @@ export async function POST(request: NextRequest) {
         phone: body.phone || null,
         message: body.message || null,
         referralSource: body.referralSource || null,
-        eventDate: body.eventDate
-          ? (() => {
-              const d = new Date(body.eventDate);
-              return isNaN(d.getTime()) ? null : d;
-            })()
-          : null,
+        eventDate: body.eventDate ? new Date(body.eventDate) : null,
         venue: body.venue || null,
         guestCount: body.guestCount ? parseInt(body.guestCount) : null,
         partnerName: body.partnerName || null,
@@ -58,12 +53,27 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 
-  // Send confirmation email (fire-and-forget — don't block the response)
+  // Send confirmation email to client (fire-and-forget)
   sendEmail({
     to: body.email,
     subject: "Thanks for reaching out to COOK/Media!",
     html: inquiryConfirmationEmail(body.name, body.serviceType),
   }).catch((err) => console.error("[Email] Failed to send confirmation:", err));
+
+  // Send notification email to Corey (fire-and-forget)
+  sendEmail({
+    to: "corey@cook-media.com",
+    subject: `New Inquiry: ${body.name} — ${body.serviceType.replace("_", " ")}`,
+    html: inquiryNotificationEmail({
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      serviceType: body.serviceType,
+      eventDate: body.eventDate,
+      venue: body.venue,
+      message: body.message,
+    }),
+  }).catch((err) => console.error("[Email] Failed to send notification:", err));
 
   return NextResponse.json({ id: inquiry.id }, { status: 201 });
 }
