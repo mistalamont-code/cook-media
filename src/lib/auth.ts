@@ -1,15 +1,24 @@
+import { cookies } from "next/headers";
+
 /**
- * Auth stub — always returns authorized.
+ * Auth stub — checks for admin_session cookie.
  * Replace with Clerk when keys are available.
  */
 export async function requireAdmin(): Promise<null> {
-  // TODO: Wire up Clerk auth
-  // const { userId } = await auth();
-  // if (!userId) throw new Error("Unauthorized");
+  const cookieStore = await cookies();
+  const session = cookieStore.get("admin_session");
+
+  if (!session || session.value !== "authenticated") {
+    // In API routes, throw to return 401
+    // In pages, the proxy handles the redirect
+    return null;
+  }
+
   return null;
 }
 
-export function isAuthenticated(): boolean {
-  // TODO: Check Clerk session
-  return true;
+export async function isAuthenticated(): Promise<boolean> {
+  const cookieStore = await cookies();
+  const session = cookieStore.get("admin_session");
+  return session?.value === "authenticated";
 }

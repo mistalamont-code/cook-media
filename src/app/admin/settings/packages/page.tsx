@@ -170,7 +170,7 @@ export default function PackagesSettingsPage() {
     setAddOns((prev) => prev.map((a) => (a.id === id ? { ...a, active: !active } : a)));
   }
 
-  if (loading) return <p className="text-brand-text-muted">Loading...</p>;
+  if (loading) return <p className="text-brand-text-muted">Loading settings...</p>;
 
   return (
     <div className="space-y-8 max-w-4xl">

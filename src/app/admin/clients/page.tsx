@@ -160,9 +160,9 @@ export default function ClientsPage() {
           </thead>
           <tbody className="divide-y divide-white/8">
             {loading ? (
-              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading...</td></tr>
+              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading clients...</td></tr>
             ) : clients.length === 0 ? (
-              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No clients found</td></tr>
+              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No clients yet. Clients are created when you convert an inquiry.</td></tr>
             ) : (
               clients.map((client) => (
                 <tr key={client.id} className="hover:bg-white/5">

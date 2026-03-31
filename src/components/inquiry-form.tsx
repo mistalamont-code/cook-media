@@ -1,32 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Select } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-type ServiceType = "WEDDING" | "LIVE_SOUND" | "SPEAKING_BOOK";
+type ServiceType = "WEDDING" | "EVENT" | "LIVE_SOUND";
 
 interface FormData {
   serviceType: ServiceType | "";
+  // Contact fields (collected on step 2 for all paths)
   name: string;
   email: string;
   phone: string;
+  referralSource: string;
+  // Common
+  eventDate: string;
   message: string;
   // Wedding fields
-  eventDate: string;
   venue: string;
   guestCount: string;
   partnerName: string;
-  // Live sound fields
+  packageInterest: string;
+  // Event fields
   eventType: string;
   attendees: string;
-  // Speaking fields
-  topic: string;
-  audience: string;
+  servicesNeeded: string[];
+  // Live Sound fields
+  liveSoundVenue: string;
 }
 
 const initialFormData: FormData = {
@@ -34,15 +39,17 @@ const initialFormData: FormData = {
   name: "",
   email: "",
   phone: "",
-  message: "",
+  referralSource: "",
   eventDate: "",
+  message: "",
   venue: "",
   guestCount: "",
   partnerName: "",
+  packageInterest: "",
   eventType: "",
   attendees: "",
-  topic: "",
-  audience: "",
+  servicesNeeded: [],
+  liveSoundVenue: "",
 };
 
 const serviceOptions: { value: ServiceType; label: string; description: string }[] = [
@@ -52,18 +59,44 @@ const serviceOptions: { value: ServiceType; label: string; description: string }
     description: "Photography, videography, and livestreaming for your special day",
   },
   {
+    value: "EVENT",
+    label: "Event Photography & Video",
+    description: "Professional photo and video coverage for corporate, community, and private events",
+  },
+  {
     value: "LIVE_SOUND",
     label: "Live Sound / AV",
     description: "Professional sound and AV production for events and performances",
   },
-  {
-    value: "SPEAKING_BOOK",
-    label: "Speaking / Book",
-    description: "Speaking engagements, book orders, and author consulting",
-  },
 ];
 
-const validServiceTypes: ServiceType[] = ["WEDDING", "LIVE_SOUND", "SPEAKING_BOOK"];
+const validServiceTypes: ServiceType[] = ["WEDDING", "EVENT", "LIVE_SOUND"];
+
+const referralOptions = [
+  { value: "", label: "Select one (optional)" },
+  { value: "Google", label: "Google" },
+  { value: "Instagram", label: "Instagram" },
+  { value: "Referral", label: "Referral" },
+  { value: "Venue Partner", label: "Venue Partner" },
+  { value: "Other", label: "Other" },
+];
+
+const eventTypeOptions = [
+  { value: "", label: "Select event type" },
+  { value: "Corporate", label: "Corporate" },
+  { value: "Community", label: "Community" },
+  { value: "Nonprofit", label: "Nonprofit" },
+  { value: "Private Party", label: "Private Party" },
+  { value: "Other", label: "Other" },
+];
+
+const packageOptions = [
+  { value: "", label: "Select a package (optional)" },
+  { value: "Package 1", label: "Package 1 ($3,000)" },
+  { value: "Package 2", label: "Package 2 ($2,000)" },
+  { value: "Package 3", label: "Package 3 ($1,500)" },
+  { value: "Not Sure", label: "Not Sure" },
+];
 
 interface InquiryFormProps {
   defaultService?: string;
@@ -79,14 +112,22 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [dateHint, setDateHint] = useState(false);
   const [emailTouched, setEmailTouched] = useState(false);
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
-  const isStep3Valid = form.name.trim().length > 0 && isEmailValid;
+  const isStep2Valid = form.name.trim().length > 0 && isEmailValid && form.phone.trim().length > 0;
 
   function update(field: keyof FormData, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
+  }
+
+  function toggleServiceNeeded(service: string) {
+    setForm((prev) => ({
+      ...prev,
+      servicesNeeded: prev.servicesNeeded.includes(service)
+        ? prev.servicesNeeded.filter((s) => s !== service)
+        : [...prev.servicesNeeded, service],
+    }));
   }
 
   async function handleSubmit() {
@@ -94,10 +135,37 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
     setError("");
 
     try {
+      // Map form data to API shape
+      const payload: Record<string, unknown> = {
+        serviceType: form.serviceType,
+        name: form.name,
+        email: form.email,
+        phone: form.phone || null,
+        referralSource: form.referralSource || null,
+        eventDate: form.eventDate || null,
+        message: form.message || null,
+      };
+
+      if (form.serviceType === "WEDDING") {
+        payload.venue = form.venue || null;
+        payload.guestCount = form.guestCount || null;
+        payload.partnerName = form.partnerName || null;
+        payload.packageInterest = form.packageInterest || null;
+      } else if (form.serviceType === "EVENT") {
+        payload.eventType = form.eventType || null;
+        payload.venue = form.venue || null;
+        payload.attendees = form.attendees || null;
+        payload.servicesNeeded = form.servicesNeeded;
+      } else if (form.serviceType === "LIVE_SOUND") {
+        payload.eventType = form.eventType || null;
+        payload.attendees = form.attendees || null;
+        payload.venue = form.liveSoundVenue || null;
+      }
+
       const res = await fetch("/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
@@ -117,7 +185,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
     return (
       <div className="text-center space-y-8 py-12" role="status" aria-live="polite">
         <div className="space-y-4">
-          <div className="text-5xl" aria-hidden="true">✓</div>
+          <div className="text-5xl" aria-hidden="true">&check;</div>
           <h2 className="text-2xl font-bold">Thank you, {form.name}!</h2>
           <p className="text-brand-text-muted max-w-md mx-auto">
             Your inquiry has been received. Corey will personally review your
@@ -161,7 +229,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
             key={s}
             className={cn(
               "h-2 rounded-full transition-[width,background-color] duration-300",
-              s === step ? "w-8 bg-brand-red" : s < step ? "w-8 bg-brand-red" : "w-8 bg-white/10"
+              s <= step ? "w-8 bg-brand-red" : "w-8 bg-white/10"
             )}
           />
         ))}
@@ -196,123 +264,8 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
         </div>
       )}
 
-      {/* Step 2: Service-specific fields */}
+      {/* Step 2: Contact info */}
       {step === 2 && (
-        <div className="space-y-6 max-w-lg mx-auto">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold">Tell us about your event</h2>
-            <p className="text-brand-text-muted mt-1">
-              {form.serviceType === "WEDDING" && "Share the details of your big day"}
-              {form.serviceType === "LIVE_SOUND" && "Tell us about your event or performance"}
-              {form.serviceType === "SPEAKING_BOOK" && "What are you looking for?"}
-            </p>
-          </div>
-
-          <div>
-            <Input
-              label="Event Date"
-              type="date"
-              id="eventDate"
-              value={form.eventDate}
-              onChange={(e) => {
-                update("eventDate", e.target.value);
-                setDateHint(false);
-              }}
-            />
-            {dateHint && !form.eventDate && (
-              <p className="text-sm text-brand-error mt-1.5">Please select an event date</p>
-            )}
-          </div>
-
-          {form.serviceType === "WEDDING" && (
-            <>
-              <Input
-                label="Your Partner's Name"
-                id="partnerName"
-                placeholder="e.g., Jordan"
-                value={form.partnerName}
-                onChange={(e) => update("partnerName", e.target.value)}
-              />
-              <Input
-                label="Venue"
-                id="venue"
-                placeholder="e.g., The Brewerie at Union Station"
-                value={form.venue}
-                onChange={(e) => update("venue", e.target.value)}
-              />
-              <Input
-                label="Estimated Guest Count"
-                id="guestCount"
-                type="number"
-                placeholder="e.g., 150"
-                value={form.guestCount}
-                onChange={(e) => update("guestCount", e.target.value)}
-              />
-            </>
-          )}
-
-          {form.serviceType === "LIVE_SOUND" && (
-            <>
-              <Input
-                label="Event Type"
-                id="eventType"
-                placeholder="e.g., Corporate event, Concert, Church service"
-                value={form.eventType}
-                onChange={(e) => update("eventType", e.target.value)}
-              />
-              <Input
-                label="Expected Attendance"
-                id="attendees"
-                type="number"
-                placeholder="e.g., 200"
-                value={form.attendees}
-                onChange={(e) => update("attendees", e.target.value)}
-              />
-            </>
-          )}
-
-          {form.serviceType === "SPEAKING_BOOK" && (
-            <>
-              <Input
-                label="Topic / Subject"
-                id="topic"
-                placeholder="e.g., Life after high school, Leadership"
-                value={form.topic}
-                onChange={(e) => update("topic", e.target.value)}
-              />
-              <Input
-                label="Audience"
-                id="audience"
-                placeholder="e.g., High school students, Young professionals"
-                value={form.audience}
-                onChange={(e) => update("audience", e.target.value)}
-              />
-            </>
-          )}
-
-          <div className="flex gap-3">
-            <Button variant="outline" onClick={() => setStep(1)}>
-              Back
-            </Button>
-            <Button
-              onClick={() => {
-                if (!form.eventDate) {
-                  setDateHint(true);
-                  return;
-                }
-                setStep(3);
-              }}
-              disabled={!form.eventDate}
-              className="flex-1"
-            >
-              Continue
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Step 3: Contact info */}
-      {step === 3 && (
         <div className="space-y-6 max-w-lg mx-auto">
           <div className="text-center">
             <h2 className="text-2xl font-bold">How can we reach you?</h2>
@@ -320,7 +273,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
           </div>
 
           <Input
-            label="Your Name"
+            label="Full Name"
             id="name"
             autoComplete="name"
             placeholder="e.g., Jane Smith"
@@ -348,7 +301,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
             )}
           </div>
           <Input
-            label="Phone Number (optional)"
+            label="Phone Number"
             id="phone"
             type="tel"
             inputMode="tel"
@@ -356,9 +309,173 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
             placeholder="e.g., (814) 555-1234"
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
+            required
           />
+          <Select
+            label="How did you hear about us?"
+            id="referralSource"
+            options={referralOptions.slice(1)}
+            placeholder="Select one (optional)"
+            value={form.referralSource}
+            onChange={(e) => update("referralSource", e.target.value)}
+          />
+
+          <div className="flex gap-3">
+            <Button variant="outline" onClick={() => setStep(1)}>
+              Back
+            </Button>
+            <Button
+              onClick={() => setStep(3)}
+              disabled={!isStep2Valid}
+              className="flex-1"
+            >
+              Continue
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Step 3: Service-specific fields */}
+      {step === 3 && (
+        <div className="space-y-6 max-w-lg mx-auto">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">Tell us about your event</h2>
+            <p className="text-brand-text-muted mt-1">
+              {form.serviceType === "WEDDING" && "Share the details of your big day"}
+              {form.serviceType === "EVENT" && "Tell us about the event you need covered"}
+              {form.serviceType === "LIVE_SOUND" && "Tell us about your event or performance"}
+            </p>
+          </div>
+
+          <Input
+            label="Event Date"
+            type="date"
+            id="eventDate"
+            value={form.eventDate}
+            onChange={(e) => update("eventDate", e.target.value)}
+          />
+
+          {/* Wedding-specific fields */}
+          {form.serviceType === "WEDDING" && (
+            <>
+              <Input
+                label="Your Partner's Name"
+                id="partnerName"
+                placeholder="e.g., Jordan"
+                value={form.partnerName}
+                onChange={(e) => update("partnerName", e.target.value)}
+              />
+              <Input
+                label="Venue"
+                id="venue"
+                placeholder="e.g., The Brewerie at Union Station"
+                value={form.venue}
+                onChange={(e) => update("venue", e.target.value)}
+              />
+              <Input
+                label="Estimated Guest Count"
+                id="guestCount"
+                type="number"
+                placeholder="e.g., 150"
+                value={form.guestCount}
+                onChange={(e) => update("guestCount", e.target.value)}
+              />
+              <Select
+                label="Package Interest"
+                id="packageInterest"
+                options={packageOptions.slice(1)}
+                placeholder="Select a package (optional)"
+                value={form.packageInterest}
+                onChange={(e) => update("packageInterest", e.target.value)}
+              />
+            </>
+          )}
+
+          {/* Event-specific fields */}
+          {form.serviceType === "EVENT" && (
+            <>
+              <Select
+                label="Event Type"
+                id="eventType"
+                options={eventTypeOptions.slice(1)}
+                placeholder="Select event type"
+                value={form.eventType}
+                onChange={(e) => update("eventType", e.target.value)}
+              />
+              <Input
+                label="Venue / Location"
+                id="venue"
+                placeholder="e.g., Bayfront Convention Center"
+                value={form.venue}
+                onChange={(e) => update("venue", e.target.value)}
+              />
+              <Input
+                label="Expected Attendance"
+                id="attendees"
+                type="number"
+                placeholder="e.g., 200"
+                value={form.attendees}
+                onChange={(e) => update("attendees", e.target.value)}
+              />
+              <fieldset>
+                <legend className="block text-xs font-medium uppercase tracking-wider text-brand-text-muted mb-2">
+                  Services Needed
+                </legend>
+                <div className="flex flex-wrap gap-3">
+                  {["Photography", "Videography", "Both"].map((svc) => (
+                    <label
+                      key={svc}
+                      className={cn(
+                        "flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm cursor-pointer transition-colors duration-300",
+                        form.servicesNeeded.includes(svc)
+                          ? "border-brand-red bg-brand-red/10 text-brand-text"
+                          : "border-white/10 bg-brand-surface text-brand-text-muted hover:border-white/20"
+                      )}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={form.servicesNeeded.includes(svc)}
+                        onChange={() => toggleServiceNeeded(svc)}
+                        className="sr-only"
+                      />
+                      {svc}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            </>
+          )}
+
+          {/* Live Sound-specific fields */}
+          {form.serviceType === "LIVE_SOUND" && (
+            <>
+              <Input
+                label="Event Type"
+                id="eventType"
+                placeholder="e.g., Corporate event, Concert, Church service"
+                value={form.eventType}
+                onChange={(e) => update("eventType", e.target.value)}
+              />
+              <Input
+                label="Expected Attendance"
+                id="attendees"
+                type="number"
+                placeholder="e.g., 200"
+                value={form.attendees}
+                onChange={(e) => update("attendees", e.target.value)}
+              />
+              <Input
+                label="Venue / Location"
+                id="liveSoundVenue"
+                placeholder="e.g., Warner Theatre"
+                value={form.liveSoundVenue}
+                onChange={(e) => update("liveSoundVenue", e.target.value)}
+              />
+            </>
+          )}
+
           <Textarea
-            label="Anything else you'd like us to know?"
+            label="Additional Details"
             id="message"
             placeholder="Tell us about your vision, questions, or special requests..."
             value={form.message}
@@ -376,7 +493,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
             </Button>
             <Button
               onClick={handleSubmit}
-              disabled={submitting || !isStep3Valid}
+              disabled={submitting}
               className="flex-1"
             >
               {submitting ? "Sending..." : "Submit Inquiry"}

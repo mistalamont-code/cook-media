@@ -27,6 +27,7 @@ const columns = [
 
 const serviceTypeLabel: Record<string, string> = {
   WEDDING: "Wedding",
+  EVENT: "Event",
   LIVE_SOUND: "Live Sound",
   SPEAKING_BOOK: "Speaking",
 };
@@ -76,7 +77,7 @@ export default function PipelinePage() {
             <div className="space-y-2">
               {items.length === 0 ? (
                 <div className="rounded-lg border border-dashed border-white/8 p-4 text-center text-xs text-brand-text-muted">
-                  No inquiries
+                  No inquiries yet
                 </div>
               ) : (
                 items.map((inq) => (

@@ -11,6 +11,7 @@ datasource db {
 
 enum ServiceType {
   WEDDING
+  EVENT
   LIVE_SOUND
   SPEAKING_BOOK
 }
@@ -63,17 +64,22 @@ model Inquiry {
   phone       String?
 
   // Common fields
-  eventDate   DateTime?
-  message     String?       @db.Text
+  eventDate      DateTime?
+  message        String?       @db.Text
+  referralSource String?       // How did you hear about us?
 
   // Wedding-specific
-  venue       String?
-  guestCount  Int?
-  partnerName String?
+  venue          String?
+  guestCount     Int?
+  partnerName    String?
+  packageInterest String? // Package 1, Package 2, Package 3, Not Sure
 
   // Live-sound-specific
   eventType   String?
   attendees   Int?
+
+  // Event-specific
+  servicesNeeded String[] // Photography, Videography, Both
 
   // Speaking/book-specific
   topic       String?

@@ -3,53 +3,91 @@ import Image from "next/image";
 
 const services = [
   {
-    title: "Events",
-    description:
-      "From corporate galas to community celebrations, we capture the energy and essence of your event with a blend of creativity and professionalism.",
-    image: "/images/service-events.jpg",
-    href: "/inquiry?service=LIVE_SOUND",
-  },
-  {
     title: "Weddings",
     description:
-      "Your wedding day is a story waiting to be told. We capture the laughter, tears, and joy, immortalizing them in stunning photographs and videos.",
+      "Photography, videography, and livestreaming for your special day.",
     image: "/images/hero-couple.jpg",
     href: "/inquiry?service=WEDDING",
   },
   {
-    title: "Lifethrumusic Band",
+    title: "Event Photography & Video",
     description:
-      "Elevate your event with soulful live sounds. Our band brings vibrant energy to any occasion — corporate events, weddings, or private parties.",
+      "From corporate galas to community celebrations, we capture the energy and essence of your event.",
+    image: "/images/service-events.jpg",
+    href: "/inquiry?service=EVENT",
+  },
+  {
+    title: "Live Sound & AV",
+    description:
+      "Professional sound, AV production, and live band performances for events and private parties.",
     image: "/images/portfolio.jpg",
     href: "/inquiry?service=LIVE_SOUND",
   },
 ];
 
+const steps = [
+  {
+    number: "01",
+    title: "Inquire",
+    description: "Tell us about your event through our simple inquiry form.",
+  },
+  {
+    number: "02",
+    title: "Proposal",
+    description:
+      "We'll send you a custom proposal tailored to your needs and budget.",
+  },
+  {
+    number: "03",
+    title: "Book",
+    description:
+      "Approve your proposal, pay your retainer, and your date is locked in.",
+  },
+];
+
 const commitments = [
   {
-    icon: "✦",
+    icon: "\u2726",
     title: "Quality & Creativity",
     description:
       "We deliver top-notch quality with a creative touch that makes each project unique.",
   },
   {
-    icon: "◉",
+    icon: "\u25C9",
     title: "Customer-Centric",
     description:
       "Your vision is our priority. We collaborate closely to meet and exceed your expectations.",
   },
   {
-    icon: "◈",
+    icon: "\u25C8",
     title: "Flexibility & Reach",
     description:
-      "Rooted in Erie, PA — our passion takes us wherever your story needs to be told.",
+      "Rooted in Erie, PA \u2014 our passion takes us wherever your story needs to be told.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Review coming soon",
+    name: "Client Name",
+    eventType: "Wedding",
+  },
+  {
+    quote: "Review coming soon",
+    name: "Client Name",
+    eventType: "Corporate Event",
+  },
+  {
+    quote: "Review coming soon",
+    name: "Client Name",
+    eventType: "Community Event",
   },
 ];
 
 const faqs = [
   {
     q: "What services does COOK/Media offer?",
-    a: "We specialize in professional photography, videography, and live music performances. Our services are ideal for corporate events, weddings, and other special occasions.",
+    a: "We specialize in wedding photography and videography, event photography and video, and live sound and AV production. Our services cover weddings, corporate events, community celebrations, and private parties.",
   },
   {
     q: "Do you travel for events and shoots?",
@@ -66,6 +104,18 @@ const faqs = [
   {
     q: "How can we book your services?",
     a: "Book through our website, email, or phone. We look forward to discussing how we can make your event unforgettable.",
+  },
+  {
+    q: "How long until we receive our photos?",
+    a: "Fully edited galleries are typically delivered within 4\u20136 weeks.",
+  },
+  {
+    q: "Do you travel for destination weddings?",
+    a: "Yes! We love destination work. Travel costs are included in your custom quote.",
+  },
+  {
+    q: "Can we customize a package?",
+    a: "Absolutely. Start with any package and add services a la carte to match your needs.",
   },
 ];
 
@@ -96,18 +146,17 @@ export default function HomePage() {
               href="/inquiry"
               className="rounded bg-brand-red px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]"
             >
-              Book Here
+              Start Your Inquiry
             </Link>
           </div>
           <Link href="/inquiry" className="md:hidden rounded bg-brand-red px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-white">
-            Book Here
+            Inquire
           </Link>
         </div>
       </nav>
 
-      {/* ═══ HERO — Full-bleed image with gradient overlay ═══ */}
+      {/* ═══ HERO ═══ */}
       <section id="main" className="relative min-h-screen flex items-center justify-center scroll-mt-[70px]">
-        {/* Background image */}
         <Image
           src="/images/hero-couple.jpg"
           alt="Wedding couple photographed by Cook Media"
@@ -115,7 +164,6 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        {/* Gradient overlay (brand guide pattern — adapted for black) */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(10,10,10,0.85)] via-[rgba(10,10,10,0.55)] to-[rgba(10,10,10,1)]" />
 
         <div className="relative text-center max-w-[800px] mx-auto px-6 py-32 space-y-8">
@@ -123,38 +171,35 @@ export default function HomePage() {
             Erie, PA &amp; Beyond
           </p>
           <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-black font-heading leading-[1.1]">
-            Your Vision,{" "}
+            Your Story,{" "}
             <span className="bg-gradient-to-r from-brand-red via-[#ff4d5a] to-brand-red bg-clip-text text-transparent">
-              Our Lens
+              Beautifully Told
             </span>
           </h1>
           <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           <p className="text-[clamp(1rem,2.5vw,1.15rem)] font-light text-white/70 leading-relaxed max-w-2xl mx-auto">
-            We&apos;re storytellers, artists, and your partners in capturing
-            life&apos;s most precious moments through photography, videography,
-            and live performances.
+            Wedding photography, videography, and live sound production &mdash; based in Erie, PA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Link
               href="/inquiry"
               className="rounded bg-brand-red px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
             >
-              Book Here
+              Start Your Inquiry
             </Link>
             <a
               href="#services"
               className="rounded border border-white/20 px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white/90 hover:bg-white/5 hover:-translate-y-0.5 transition-[color,background-color,transform] duration-300"
             >
-              Our Services
+              See Our Services
             </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ ABOUT — Photo + text side by side ═══ */}
+      {/* ═══ ABOUT ═══ */}
       <section id="about" className="py-[100px] px-6 scroll-mt-[70px]">
         <div className="mx-auto max-w-[1000px] grid gap-12 md:grid-cols-2 items-center">
-          {/* Photo */}
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
             <Image
               src="/images/about.jpg"
@@ -164,7 +209,6 @@ export default function HomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/60 to-transparent" />
           </div>
-          {/* Text */}
           <div className="space-y-6">
             <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
               Welcome
@@ -174,21 +218,18 @@ export default function HomePage() {
             </h2>
             <div className="w-[60px] h-[2px] bg-brand-red" aria-hidden="true" />
             <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
-              Where we craft not just images, but the stories that will echo through your lifetime.
-              Nestled in the heart of Erie, PA, our passion lies in immortalizing the pivotal chapters
-              of your journey — be it the decisive moments of corporate success or the intimate whispers
-              of &ldquo;I do.&rdquo;
+              COOK/Media is a full-service media production company based in Erie, PA. We specialize
+              in wedding photography and videography, event coverage, and live sound and AV production.
             </p>
             <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
-              With our expert photography, cinematic videography, and the soul-stirring
-              performances of the Lifethrumusic Band, we ensure that your memories are not only captured
-              but also felt deeply.
+              Whether it&apos;s your wedding day, a corporate event, or a community celebration &mdash;
+              we bring the vision, the energy, and the craft to make it unforgettable.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ═══ SERVICES — Cards with images ═══ */}
+      {/* ═══ SERVICES ═══ */}
       <section id="services" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
@@ -205,7 +246,6 @@ export default function HomePage() {
                 href={service.href}
                 className="group rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden transition-[border-color,transform,box-shadow] duration-300 hover:border-brand-red/30 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(196,30,42,0.1)]"
               >
-                {/* Card image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={service.image}
@@ -215,7 +255,6 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent" />
                 </div>
-                {/* Card body */}
                 <div className="p-6 space-y-3">
                   <h3 className="text-lg font-bold font-heading group-hover:text-brand-red transition-colors duration-300">
                     {service.title}
@@ -224,7 +263,7 @@ export default function HomePage() {
                     {service.description}
                   </p>
                   <span className="inline-block text-[0.7rem] font-semibold uppercase tracking-[1.5px] text-brand-red pt-1">
-                    Learn More →
+                    Learn More &rarr;
                   </span>
                 </div>
               </Link>
@@ -233,8 +272,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ HOW IT WORKS ═══ */}
+      <section className="py-[100px] px-6">
+        <div className="mx-auto max-w-[1000px]">
+          <div className="text-center space-y-4 mb-16">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+              The Process
+            </p>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">How It Works</h2>
+            <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {steps.map((step) => (
+              <div key={step.number} className="text-center space-y-4 rounded-lg border border-white/[0.06] bg-brand-card p-8">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10 text-lg font-bold text-brand-red font-heading">
+                  {step.number}
+                </span>
+                <h3 className="text-base font-bold font-heading">{step.title}</h3>
+                <p className="text-[0.85rem] text-brand-text-muted leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ PRICING ═══ */}
-      <section id="pricing" className="py-[100px] px-6 scroll-mt-[70px]">
+      <section id="pricing" className="py-[100px] px-6 scroll-mt-[70px] bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
             <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
@@ -250,7 +315,7 @@ export default function HomePage() {
               Wedding Photography
             </h3>
             <div className="grid gap-6 md:grid-cols-3">
-              {/* Package 1 — Anchor */}
+              {/* Package 1 */}
               <div className="rounded-lg border-2 border-brand-red bg-brand-card p-8 relative">
                 <span className="absolute -top-3 left-6 bg-brand-red text-white text-[0.65rem] font-semibold uppercase tracking-[1.5px] px-3 py-1 rounded-full">
                   Most Popular
@@ -259,11 +324,11 @@ export default function HomePage() {
                 <p className="text-3xl font-bold font-heading tabular-nums">$3,000</p>
                 <div className="w-10 h-[2px] bg-brand-red mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> All-day photography (2 photographers)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Highlight video with drone footage</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Rehearsal dinner coverage</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Ceremony livestream included</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Highlight video with drone footage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Rehearsal dinner coverage</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Ceremony livestream included</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
                 <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded bg-brand-red px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]">
                   Book Package 1
@@ -276,9 +341,9 @@ export default function HomePage() {
                 <p className="text-3xl font-bold font-heading tabular-nums">$2,000</p>
                 <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> All-day photography (2 photographers)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Highlight video</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> All-day photography (2 photographers)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Highlight video</li>
                 </ul>
                 <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
                   Book Package 2
@@ -291,8 +356,8 @@ export default function HomePage() {
                 <p className="text-3xl font-bold font-heading tabular-nums">$1,500</p>
                 <div className="w-10 h-[2px] bg-white/10 mt-4 mb-6" aria-hidden="true" />
                 <ul className="space-y-2.5 text-[0.85rem] text-brand-text-muted leading-relaxed">
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> 6-hour photography (1 photographer)</li>
-                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">✓</span> Engagement session</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> 6-hour photography (1 photographer)</li>
+                  <li className="flex items-start gap-2"><span className="text-brand-red mt-0.5" aria-hidden="true">&check;</span> Engagement session</li>
                 </ul>
                 <Link href="/inquiry?service=WEDDING" className="block mt-8 rounded border border-brand-red/40 px-6 py-3 text-center text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300">
                   Book Package 3
@@ -305,54 +370,67 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* A La Carte */}
-          <div className="grid gap-12 md:grid-cols-2 mb-16">
+          {/* A La Carte + Event Photography */}
+          <div className="grid gap-6 md:grid-cols-2 mb-16">
+            {/* A La Carte as cards */}
             <div>
               <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
                 Wedding A La Carte
               </h3>
-              <div className="rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden">
-                <table className="w-full text-[0.85rem]">
-                  <tbody className="divide-y divide-white/[0.06]">
-                    {[
-                      ["Family Portrait Session", "$200"],
-                      ["Wedding Day Details Preparation", "$200"],
-                      ["Rehearsal Coverage", "$200"],
-                      ["Engagement Session", "$200"],
-                      ["HD Livestreaming w/ Pro Sound", "$350"],
-                    ].map(([service, price]) => (
-                      <tr key={service} className="hover:bg-white/[0.03] transition-colors">
-                        <td className="px-6 py-3.5 text-brand-text">{service}</td>
-                        <td className="px-6 py-3.5 text-right font-semibold tabular-nums">{price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="space-y-3">
+                {[
+                  ["Family Portrait Session", "$200"],
+                  ["Wedding Day Details Preparation", "$200"],
+                  ["Rehearsal Coverage", "$200"],
+                  ["Engagement Session", "$200"],
+                  ["HD Livestreaming w/ Pro Sound", "$350"],
+                ].map(([service, price]) => (
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-white/[0.06] bg-brand-card px-5 py-3.5 hover:border-brand-red/20 transition-colors duration-300">
+                    <span className="text-[0.85rem] text-brand-text">{service}</span>
+                    <span className="text-[0.85rem] font-semibold tabular-nums">{price}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
+            {/* Event Photography */}
             <div>
               <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
                 Event Photography
               </h3>
-              <div className="rounded-lg border border-white/[0.06] bg-brand-card overflow-hidden">
-                <table className="w-full text-[0.85rem]">
-                  <tbody className="divide-y divide-white/[0.06]">
-                    {[
-                      ["Hourly Rate", "$75/hr"],
-                      ["Additional Hours (overtime)", "$75/hr"],
-                    ].map(([service, price]) => (
-                      <tr key={service} className="hover:bg-white/[0.03] transition-colors">
-                        <td className="px-6 py-3.5 text-brand-text">{service}</td>
-                        <td className="px-6 py-3.5 text-right font-semibold tabular-nums">{price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="space-y-3">
+                {[
+                  ["Hourly Rate", "$75/hr"],
+                  ["Additional Hours (overtime)", "$75/hr"],
+                ].map(([service, price]) => (
+                  <div key={service} className="flex items-center justify-between rounded-lg border border-white/[0.06] bg-brand-card px-5 py-3.5 hover:border-brand-red/20 transition-colors duration-300">
+                    <span className="text-[0.85rem] text-brand-text">{service}</span>
+                    <span className="text-[0.85rem] font-semibold tabular-nums">{price}</span>
+                  </div>
+                ))}
               </div>
               <p className="text-[0.78rem] text-brand-text-muted/60 mt-4">
                 Custom quotes available for multi-day events and large-scale productions.
               </p>
+            </div>
+          </div>
+
+          {/* Live Sound & AV */}
+          <div className="mb-16">
+            <h3 className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red mb-6">
+              Live Sound & AV
+            </h3>
+            <div className="rounded-lg border border-white/[0.06] bg-brand-card p-8 text-center space-y-4">
+              <p className="text-[1rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
+                Custom quotes based on event type, venue size, and equipment requirements.
+                Contact us for a tailored proposal.
+              </p>
+              <Link
+                href="/inquiry?service=LIVE_SOUND"
+                className="inline-block rounded bg-brand-red px-7 py-3 text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.25)]"
+              >
+                Get a Quote
+              </Link>
             </div>
           </div>
 
@@ -362,14 +440,14 @@ export default function HomePage() {
               Booking Policy
             </p>
             <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
-              50% of package due to reserve your date. All packages and extras applicable to tax.
+              50% of package due to reserve your date. All packages subject to applicable sales tax.
               Cash, check, and credit card accepted. All final images delivered by online gallery.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ═══ PORTFOLIO — Full-bleed image with overlay ═══ */}
+      {/* ═══ OUR COMMITMENT ═══ */}
       <section className="relative py-[120px] px-6">
         <Image
           src="/images/commitment.jpg"
@@ -400,34 +478,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ GALLERY — Photo strip ═══ */}
-      <section className="py-[100px] px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+      {/* ═══ TESTIMONIALS ═══ */}
+      <section className="py-[100px] px-6">
         <div className="mx-auto max-w-[1000px]">
           <div className="text-center space-y-4 mb-16">
             <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
-              Our Work
+              What They Say
             </p>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Recent Projects</h2>
+            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Client Love</h2>
             <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              { src: "/images/hero-couple.jpg", alt: "Jamale and Autumn wedding" },
-              { src: "/images/service-events.jpg", alt: "Event photography" },
-              { src: "/images/about.jpg", alt: "Behind the scenes" },
-              { src: "/images/portfolio.jpg", alt: "Live performance" },
-            ].map((img) => (
-              <div key={img.src} className="relative aspect-square rounded-lg overflow-hidden group">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <div key={i} className="rounded-lg border border-white/[0.06] bg-brand-card p-8 space-y-4">
+                <p className="text-[0.95rem] text-brand-text-muted leading-relaxed italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div>
+                  <p className="text-sm font-semibold text-brand-text">&mdash; {t.name}</p>
+                  <p className="text-xs text-brand-text-muted">{t.eventType}</p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ PORTFOLIO / OUR WORK ═══ */}
+      <section className="py-[100px] px-6 bg-gradient-to-b from-brand-deep via-brand-dark to-brand-deep">
+        <div className="mx-auto max-w-[700px] text-center space-y-6">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[4px] text-brand-red">
+            Our Work
+          </p>
+          <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold font-heading">Recent Projects</h2>
+          <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
+          <p className="text-[1.05rem] text-brand-text-muted leading-[1.8]">
+            Gallery coming soon. Follow us on Instagram for our latest work.
+          </p>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded border border-brand-red/40 px-7 py-3 text-[0.75rem] font-semibold uppercase tracking-[1.5px] text-brand-red hover:bg-brand-red hover:text-white transition-[color,background-color,transform] duration-300"
+          >
+            Follow on Instagram
+          </a>
         </div>
       </section>
 
@@ -482,7 +577,7 @@ export default function HomePage() {
             href="/inquiry"
             className="inline-block rounded bg-brand-red px-9 py-[14px] text-[0.8rem] font-semibold uppercase tracking-[1.5px] text-white hover:bg-brand-red-light hover:-translate-y-0.5 transition-[color,background-color,transform,box-shadow] duration-300 shadow-[0_4px_20px_rgba(196,30,42,0.3)]"
           >
-            Book Here
+            Start Your Inquiry
           </Link>
           <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4 text-sm text-brand-text-muted">
             <a href="mailto:corey@cook-media.com" className="hover:text-brand-red transition-colors duration-300">
@@ -505,8 +600,8 @@ export default function HomePage() {
             </span>
           </Link>
           <p className="text-[0.9rem] text-brand-text-muted leading-relaxed max-w-xl mx-auto">
-            Your media partner for photography, videography, and live performances.
-            Based in Erie, PA — ready to bring our artistry wherever your story unfolds.
+            Your media partner for photography, videography, and live sound production.
+            Based in Erie, PA &mdash; ready to bring our craft wherever your story unfolds.
           </p>
           <div className="w-[60px] h-[2px] bg-brand-red mx-auto" aria-hidden="true" />
           <p className="text-[0.7rem] text-brand-text-muted/60 tracking-wide">
@@ -514,10 +609,7 @@ export default function HomePage() {
           </p>
           <div className="flex justify-center gap-8 pt-2">
             <Link href="/inquiry" className="text-[0.7rem] font-medium uppercase tracking-[2px] text-brand-text-muted hover:text-brand-red transition-colors duration-300">
-              Book a Service
-            </Link>
-            <Link href="/admin" className="text-[0.7rem] font-medium uppercase tracking-[2px] text-brand-text-muted hover:text-brand-red transition-colors duration-300">
-              Admin
+              Start Your Inquiry
             </Link>
           </div>
         </div>

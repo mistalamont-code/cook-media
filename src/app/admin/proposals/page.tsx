@@ -58,9 +58,9 @@ export default function ProposalsPage() {
           </thead>
           <tbody className="divide-y divide-white/8">
             {loading ? (
-              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading...</td></tr>
+              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">Loading proposals...</td></tr>
             ) : proposals.length === 0 ? (
-              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No proposals yet</td></tr>
+              <tr><td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">No proposals sent yet.</td></tr>
             ) : (
               proposals.map((p) => (
                 <tr key={p.id} className="hover:bg-white/5">

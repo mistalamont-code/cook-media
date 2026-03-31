@@ -130,13 +130,13 @@ export default function InquiriesPage() {
             {loading ? (
               <tr>
                 <td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">
-                  Loading...
+                  Loading inquiries...
                 </td>
               </tr>
             ) : inquiries.length === 0 ? (
               <tr>
                 <td colSpan={6} className="px-4 py-8 text-center text-brand-text-muted">
-                  No inquiries found
+                  No inquiries yet. Share your booking link to start receiving leads.
                 </td>
               </tr>
             ) : (

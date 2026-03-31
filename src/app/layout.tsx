@@ -15,8 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "COOK/Media",
-  description: "Cook Media LLC — Photography, Videography, Live Sound & Publishing",
+  title: "COOK/Media \u2014 Erie, PA Wedding Photography & Media Production",
+  description:
+    "Professional wedding photography, videography, event coverage, and live sound production in Erie, PA. Book COOK/Media for your next event.",
 };
 
 export const viewport: Viewport = {
