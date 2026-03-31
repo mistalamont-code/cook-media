@@ -279,14 +279,13 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
             placeholder="e.g., Jane Smith"
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
-            required
           />
           <div>
             <Input
               label="Email Address"
               id="email"
-              type="email"
               autoComplete="email"
+              inputMode="email"
               placeholder="e.g., jane@example.com"
               value={form.email}
               onChange={(e) => {
@@ -294,7 +293,6 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
                 setEmailTouched(true);
               }}
               onBlur={() => setEmailTouched(true)}
-              required
             />
             {emailTouched && form.email && !isEmailValid && (
               <p className="text-sm text-brand-error mt-1.5">Please enter a valid email</p>
@@ -303,13 +301,11 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
           <Input
             label="Phone Number"
             id="phone"
-            type="tel"
             inputMode="tel"
             autoComplete="tel"
             placeholder="e.g., (814) 555-1234"
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
-            required
           />
           <Select
             label="How did you hear about us?"
@@ -375,7 +371,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
               <Input
                 label="Estimated Guest Count"
                 id="guestCount"
-                type="number"
+                inputMode="numeric"
                 placeholder="e.g., 150"
                 value={form.guestCount}
                 onChange={(e) => update("guestCount", e.target.value)}
@@ -412,7 +408,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
               <Input
                 label="Expected Attendance"
                 id="attendees"
-                type="number"
+                inputMode="numeric"
                 placeholder="e.g., 200"
                 value={form.attendees}
                 onChange={(e) => update("attendees", e.target.value)}
@@ -459,7 +455,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
               <Input
                 label="Expected Attendance"
                 id="attendees"
-                type="number"
+                inputMode="numeric"
                 placeholder="e.g., 200"
                 value={form.attendees}
                 onChange={(e) => update("attendees", e.target.value)}
