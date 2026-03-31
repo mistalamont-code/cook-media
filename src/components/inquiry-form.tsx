@@ -191,7 +191,7 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
     return (
       <div className="text-center space-y-8 py-12" role="status" aria-live="polite">
         <div className="space-y-4">
-          <div className="text-5xl" aria-hidden="true">&check;</div>
+          <div className="text-5xl" aria-hidden="true">{"\u2713"}</div>
           <h2 className="text-2xl font-bold">Thank you, {form.name}!</h2>
           <p className="text-brand-text-muted max-w-md mx-auto">
             Your inquiry has been received. Corey will personally review your
