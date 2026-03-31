@@ -169,8 +169,14 @@ export function InquiryForm({ defaultService }: InquiryFormProps) {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Something went wrong");
+        let message = "Something went wrong. Please try again.";
+        try {
+          const data = await res.json();
+          if (data.error) message = data.error;
+        } catch {
+          // Response wasn't JSON
+        }
+        throw new Error(message);
       }
 
       setSubmitted(true);

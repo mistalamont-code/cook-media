@@ -24,26 +24,39 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const inquiry = await prisma.inquiry.create({
-    data: {
-      serviceType: body.serviceType as ServiceType,
-      name: body.name,
-      email: body.email,
-      phone: body.phone || null,
-      message: body.message || null,
-      referralSource: body.referralSource || null,
-      eventDate: body.eventDate ? (() => { const d = new Date(body.eventDate); return isNaN(d.getTime()) ? null : d; })() : null,
-      venue: body.venue || null,
-      guestCount: body.guestCount ? parseInt(body.guestCount) : null,
-      partnerName: body.partnerName || null,
-      packageInterest: body.packageInterest || null,
-      eventType: body.eventType || null,
-      attendees: body.attendees ? parseInt(body.attendees) : null,
-      servicesNeeded: body.servicesNeeded || [],
-      topic: body.topic || null,
-      audience: body.audience || null,
-    },
-  });
+  let inquiry;
+  try {
+    inquiry = await prisma.inquiry.create({
+      data: {
+        serviceType: body.serviceType as ServiceType,
+        name: body.name,
+        email: body.email,
+        phone: body.phone || null,
+        message: body.message || null,
+        referralSource: body.referralSource || null,
+        eventDate: body.eventDate
+          ? (() => {
+              const d = new Date(body.eventDate);
+              return isNaN(d.getTime()) ? null : d;
+            })()
+          : null,
+        venue: body.venue || null,
+        guestCount: body.guestCount ? parseInt(body.guestCount) : null,
+        partnerName: body.partnerName || null,
+        packageInterest: body.packageInterest || null,
+        eventType: body.eventType || null,
+        attendees: body.attendees ? parseInt(body.attendees) : null,
+        servicesNeeded: body.servicesNeeded || [],
+        topic: body.topic || null,
+        audience: body.audience || null,
+      },
+    });
+  } catch (err) {
+    console.error("[Inquiry] Failed to create:", err);
+    const message =
+      err instanceof Error ? err.message : "Failed to create inquiry";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 
   // Send confirmation email (fire-and-forget — don't block the response)
   sendEmail({
