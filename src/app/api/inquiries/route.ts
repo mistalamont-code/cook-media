@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       phone: body.phone || null,
       message: body.message || null,
       referralSource: body.referralSource || null,
-      eventDate: body.eventDate ? new Date(body.eventDate) : null,
+      eventDate: body.eventDate ? (() => { const d = new Date(body.eventDate); return isNaN(d.getTime()) ? null : d; })() : null,
       venue: body.venue || null,
       guestCount: body.guestCount ? parseInt(body.guestCount) : null,
       partnerName: body.partnerName || null,
