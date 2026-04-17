@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[800px] flex items-center justify-between px-6 h-[70px]">
           <Link href="/" aria-label="COOK/Media home" className="flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={36} height={36} className="rounded-sm" />
-            <span className="text-xl font-black font-heading font-heading">
+            <span className="text-xl font-black font-heading">
               COOK<span className="text-[var(--accent)]">/</span>Media
             </span>
           </Link>
@@ -591,7 +591,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[800px] text-center space-y-6">
           <Link href="/" className="inline-flex items-center gap-3">
             <Image src="/images/logo-light.png" alt="" width={28} height={28} className="rounded-sm" />
-            <span className="text-xl font-black font-heading font-heading">
+            <span className="text-xl font-black font-heading">
               COOK<span className="text-[var(--accent)]">/</span>Media
             </span>
           </Link>
