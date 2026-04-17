@@ -4,6 +4,31 @@ const HEADER_BG = "#0A0A0A";
 const ACCENT = "#C41E2A";
 const BODY_BG = "#FAFAF8";
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function humanizeEnum(value: string): string {
+  return value.replace(/_/g, " ");
+}
+
+function formatDate(value: string): string {
+  const iso = /^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00` : value;
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return value;
+  return d.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 function emailShell(content: string): string {
   return `
 <!DOCTYPE html>
@@ -31,13 +56,15 @@ function emailShell(content: string): string {
 }
 
 export function inquiryConfirmationEmail(name: string, serviceType: string): string {
+  const safeName = escapeHtml(name);
+  const safeService = escapeHtml(humanizeEnum(serviceType).toLowerCase());
   return emailShell(`
     <div style="padding:32px;">
       <h2 style="margin:0 0 16px;font-family:'Playfair Display',Georgia,serif;color:#1A1A2E;font-size:22px;">
-        Thanks for reaching out, ${name}!
+        Thanks for reaching out, ${safeName}!
       </h2>
       <p style="color:#6B7280;font-size:15px;line-height:1.6;margin:0 0 16px;">
-        We received your ${serviceType.toLowerCase().replace("_", " ")} inquiry and are excited to learn more about your vision.
+        We received your ${safeService} inquiry and are excited to learn more about your vision.
         Corey will personally review your details and get back to you within 24-48 hours.
       </p>
       <p style="color:#6B7280;font-size:15px;line-height:1.6;margin:0 0 24px;">
@@ -63,15 +90,32 @@ export function inquiryNotificationEmail(inquiry: {
   venue?: string | null;
   message?: string | null;
 }): string {
+  const safeName = escapeHtml(inquiry.name);
+  const safeEmail = escapeHtml(inquiry.email);
+  const safeService = escapeHtml(humanizeEnum(inquiry.serviceType));
+  const safePhone = inquiry.phone ? escapeHtml(inquiry.phone) : null;
+  const safePhoneHref = inquiry.phone
+    ? escapeHtml(inquiry.phone.replace(/[^\d+]/g, ""))
+    : null;
+  const safeEventDate = inquiry.eventDate ? escapeHtml(formatDate(inquiry.eventDate)) : null;
+  const safeVenue = inquiry.venue ? escapeHtml(inquiry.venue) : null;
+  const safeMessage = inquiry.message
+    ? escapeHtml(inquiry.message).replace(/\n/g, "<br>")
+    : null;
+
   const details = [
-    `<strong>Name:</strong> ${inquiry.name}`,
-    `<strong>Email:</strong> <a href="mailto:${inquiry.email}" style="color:${ACCENT};">${inquiry.email}</a>`,
-    inquiry.phone ? `<strong>Phone:</strong> <a href="tel:${inquiry.phone}" style="color:${ACCENT};">${inquiry.phone}</a>` : null,
-    `<strong>Service:</strong> ${inquiry.serviceType.replace("_", " ")}`,
-    inquiry.eventDate ? `<strong>Event Date:</strong> ${inquiry.eventDate}` : null,
-    inquiry.venue ? `<strong>Venue:</strong> ${inquiry.venue}` : null,
-    inquiry.message ? `<strong>Message:</strong> ${inquiry.message}` : null,
+    `<strong>Name:</strong> ${safeName}`,
+    `<strong>Email:</strong> <a href="mailto:${safeEmail}" style="color:${ACCENT};">${safeEmail}</a>`,
+    safePhone ? `<strong>Phone:</strong> <a href="tel:${safePhoneHref}" style="color:${ACCENT};">${safePhone}</a>` : null,
+    `<strong>Service:</strong> ${safeService}`,
+    safeEventDate ? `<strong>Event Date:</strong> ${safeEventDate}` : null,
+    safeVenue ? `<strong>Venue:</strong> ${safeVenue}` : null,
+    safeMessage ? `<strong>Message:</strong> ${safeMessage}` : null,
   ].filter(Boolean);
+
+  const dashboardUrl = escapeHtml(
+    `${process.env.NEXT_PUBLIC_APP_URL ?? ""}/admin/inquiries`
+  );
 
   return emailShell(`
     <div style="padding:32px;">
@@ -85,7 +129,7 @@ export function inquiryNotificationEmail(inquiry: {
         ${details.map((d) => `<p style="color:#374151;font-size:14px;line-height:1.8;margin:0 0 8px;">${d}</p>`).join("")}
       </div>
       <div style="text-align:center;">
-        <a href="${process.env.NEXT_PUBLIC_APP_URL || "https://cook-media.vercel.app"}/admin/inquiries" style="display:inline-block;background:${ACCENT};color:#FFFFFF;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">
+        <a href="${dashboardUrl}" style="display:inline-block;background:${ACCENT};color:#FFFFFF;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">
           View in Dashboard
         </a>
       </div>
@@ -93,16 +137,18 @@ export function inquiryNotificationEmail(inquiry: {
 }
 
 export function proposalEmail(clientName: string, proposalUrl: string): string {
+  const safeName = escapeHtml(clientName);
+  const safeUrl = escapeHtml(proposalUrl);
   return emailShell(`
     <div style="padding:32px;">
       <h2 style="margin:0 0 16px;font-family:'Playfair Display',Georgia,serif;color:#1A1A2E;font-size:22px;">
-        Your proposal is ready, ${clientName}!
+        Your proposal is ready, ${safeName}!
       </h2>
       <p style="color:#6B7280;font-size:15px;line-height:1.6;margin:0 0 24px;">
         We've put together a custom package based on your needs. Click below to view the full details, pricing, and deliverables.
       </p>
       <div style="text-align:center;margin:0 0 24px;">
-        <a href="${proposalUrl}" style="display:inline-block;background:${ACCENT};color:#FFFFFF;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">
+        <a href="${safeUrl}" style="display:inline-block;background:${ACCENT};color:#FFFFFF;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;">
           View Your Proposal
         </a>
       </div>
